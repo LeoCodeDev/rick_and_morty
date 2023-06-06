@@ -1,3 +1,13 @@
+@font-face {
+   font-family: 'get_schwifty';
+   src: url('./fonts/get_schwifty.ttf') format('truetype');
+}
+
 .App {
+   display: flex;
+   flex-direction: column;
    text-align: center;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
 }

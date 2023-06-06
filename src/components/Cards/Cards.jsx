@@ -1,9 +1,10 @@
-import Card from "./Card";
+import {Card} from "../Card/Card";
+import style from "./Cards.module.css";
 
-export default function Cards(props) {
+function Cards(props) {
   const { characters } = props;
   return (
-    <>
+    <section className={style.container}>
       {characters.map(
         ({
           id,
@@ -29,6 +30,8 @@ export default function Cards(props) {
           );
         }
       )}
-    </>
+    </section>
   );
 }
+
+export {Cards}
