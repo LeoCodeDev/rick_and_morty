@@ -1,5 +1,6 @@
 .card {
     width: 160px;
+    min-height: 150px;
     /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
@@ -18,8 +19,8 @@
 } */
 
 .imgContainer {
-    width: 100px;
-    height: 100px;
+    min-width: 80px;
+    min-height: 80px;
     border-radius: 50%;
     overflow: hidden;
     margin: 20px 0;
