@@ -9,10 +9,6 @@ function Cards(props) {
         ({
           id,
           name,
-          status,
-          species,
-          gender,
-          origin: { name: planet },
           image,
         }) => {
           return (
@@ -20,10 +16,6 @@ function Cards(props) {
               key={id}
               id={id}
               name={name}
-              status={status}
-              species={species}
-              gender={gender}
-              planet={planet}
               image={image}
               onClose={() => window.alert("Emulamos que se cierra la card")}
             />

@@ -1,20 +1,29 @@
 .card {
-    width: 250px;
-    height: 250px;
-    border: 1px solid black;
+    width: 160px;
+    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
+.card:hover > .infoContainer{
+    display: flex;
+}
+
+/* .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+} */
+
 .imgContainer {
-    min-width: 100px;
-    min-height: 100px;
-    max-width: 150px;
-    max-height: 150px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     overflow: hidden;
-    
+    margin: 20px 0;
+    padding: 0;
 }
 
 .card img{
@@ -23,24 +32,28 @@
 }
 
 .infoContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    display: none;
 }
 
 .name {
     font-family: 'get_schwifty';
+    font-size: 2.8rem;
     font-weight: bolder;
     -webkit-text-fill-color: #42b4ca;
-    -webkit-text-stroke: 0.08px #bfde42;
-    margin: -20px;
-    background-color: rgba(128, 128, 128, 0.7);
-    border-radius: 8px;
-    padding: 8px;
+    -webkit-text-stroke: 0.01px #000;
+    text-shadow: 2px 1px 2px #bfde42;
+    position: absolute;
+    top: 95px
 }
 
 .infoList {
-    margin-top: 50px;
     list-style: none;
-    align-self: flex-start;
+    padding: 0;
+}
+
+.infoList li {
+    font-size: 1.4rem;
+    text-align: left;
+
 }

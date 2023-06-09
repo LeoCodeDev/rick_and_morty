@@ -1,24 +1,27 @@
 .container {
+    height: 25px;
     display: grid;
     grid-template-columns: auto 1fr auto auto;
     gap: 10px;
     min-width: 300px;
-    max-width: 60%;
-    align-items: center;
-    border: 1px solid black;
+    max-width: 70%;
+    align-items: stretch;
     border-radius: 24px;
     padding: 4px;
-    margin-bottom: 50px;
+    margin: 25px 0;
+    font-size: 2.2rem;
+    box-shadow: rgba(191, 222, 66, 0.404) 1.95px 1.95px 2.6px;
 }
 
 .searchBarLabel{
     grid-column: 1;
+    padding-left: 10px;
 }
 
 .searchBar {
     width: 100%;
     border: none;
-    
+    background-color: transparent; 
 }
 
 .searchBar:focus {
@@ -27,6 +30,7 @@
 }
 
 .button {
+    font-size: 1.3rem;
     border: none;
     padding: 0;
     margin: 0;
@@ -34,3 +38,4 @@
     cursor: pointer;
     background: transparent;
 }
+

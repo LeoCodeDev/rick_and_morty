@@ -1,13 +1,14 @@
 @font-face {
    font-family: 'get_schwifty';
-   src: url('./fonts/get_schwifty.ttf') format('truetype');
+   src: url('./fonts/get-schwifty.woff') format('woff');
 }
 
 .App {
+   height: 100%;
    display: flex;
    flex-direction: column;
    text-align: center;
-   justify-content: center;
+   /* justify-content: center; */
    align-items: center;
-   width: 100%;
+   background-color: rgb(27, 27, 27);
 }

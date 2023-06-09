@@ -12,9 +12,8 @@ function SearchBar(props) {
         type="search"
         placeholder="Personaje"
       />
-      <span className="">🔍︎</span>
       <button className={style.button} onClick={onSearch}>
-        Agregar
+        🔍︎
       </button>
     </section>
   );

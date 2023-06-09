@@ -1,0 +1,68 @@
+.container {
+    margin-top: 25px;
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container > h3 {
+    font-size: large;
+}
+
+.list {
+    list-style: none;
+    margin: 0 auto 15px;
+}
+
+.list > li {
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+}
+
+.option {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.optionData {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: rgb(66 180 202);
+}
+
+.selectedCharacter {
+    width: 150px;
+    height: 150px;
+    position: relative;
+  }
+  
+  .selectedCharacter::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: no-repeat center url('../../assets/portal.png');
+    background-size: contain;
+    animation: rotate 4s linear infinite;
+    z-index: 1;
+  }
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.selectedCharacter img {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    z-index: 2;
+}
