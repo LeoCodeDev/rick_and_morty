@@ -3,8 +3,15 @@ import style from "./Cards.module.css";
 
 function Cards(props) {
   const { characters, onClose } = props;
+
+  let containerClass = style.container;
+
+  if (characters.length === 1) {
+    containerClass += ` ${style.centered}`;
+  }
+
   return (
-    <section className={style.container}>
+    <section className={containerClass}>
       {characters.map(
         ({
           id,

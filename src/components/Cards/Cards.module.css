@@ -8,6 +8,11 @@
     padding: 10px 24px;
   }
 
+  .centered {
+    padding-top: 20px;
+    justify-content: center;
+  }
+
   .container::-webkit-scrollbar {
     display: none;
   }
