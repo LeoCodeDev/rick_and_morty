@@ -1,21 +1,35 @@
 import React from "react";
 import style from "./SearchBar.module.css";
 
-function SearchBar(props) {
-  const { onSearch } = props;
+function SearchBar({ onSearch }) {
+  const [id, setId] = React.useState("");
+
+  const handleChange = (event) => {
+    setId(event.target.value);
+  };
+
   return (
-    <section className={style.container}>
-      <label htmlFor="searchBar" className={style.searchBarLabel}>Buscar</label>
+    <div className={style.container}>
+      <label htmlFor="searchBar" className={style.searchBarLabel}>
+        Buscar
+      </label>
       <input
         id="searchBar"
         className={style.searchBar}
         type="search"
         placeholder="Personaje"
+        onChange={handleChange}
       />
-      <button className={style.button} onClick={onSearch}>
+      <button className={style.button} onClick={() => onSearch(id)}>
         🔍︎
       </button>
-    </section>
+      <button
+        className={style.button}
+        onClick={() => onSearch(Math.floor(Math.random() * 826) + 1)}
+      >
+        🎲
+      </button>
+    </div>
   );
 }
 

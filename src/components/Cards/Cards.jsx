@@ -2,7 +2,7 @@ import {Card} from "../Card/Card";
 import style from "./Cards.module.css";
 
 function Cards(props) {
-  const { characters } = props;
+  const { characters, onClose } = props;
   return (
     <section className={style.container}>
       {characters.map(
@@ -17,7 +17,7 @@ function Cards(props) {
               id={id}
               name={name}
               image={image}
-              onClose={() => window.alert("Emulamos que se cierra la card")}
+              onClose={onClose}
             />
           );
         }

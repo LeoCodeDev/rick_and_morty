@@ -6,13 +6,13 @@ function Card(props) {
     id,
     name,
     image,
-    // onClose 
+    onClose 
   } = props;
   return (
     <article key={id} className={style.card}>
-      {/* <button onClick={onClose} className={style.close}>
+      <button onClick={() => onClose(id)} className={style.close}>
         X
-      </button> */}
+      </button>
       <figure className={`${style.imgContainer} ${style.hover}`}>
         <img src={image} alt={name} />
       </figure>
