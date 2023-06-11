@@ -30,7 +30,11 @@ function App() {
     );
   }
 
-  const selectCharacter = (id) => {};
+  const [selectedCharacter, setSelectedCharacter] = useState('') 
+
+  const selectCharacter = (id) => {
+    setSelectedCharacter(characters.find((character) => character.id === id))
+  };
 
   const onClose = (id) => {
     setCharacters(characters.filter((character) => character.id !== id));
@@ -41,8 +45,8 @@ function App() {
       {/* <CursorShip/> */}
       <NavBar onSearch={onSearch} />
       <LogoRAM />
-      <Cards characters={characters} onClose={onClose} />
-      <InfoCharacter />
+      <Cards characters={characters} onClose={onClose} selectCharacter={selectCharacter}/>
+      <InfoCharacter selectedCharacter={selectedCharacter}/>
     </div>
   );
 }

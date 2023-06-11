@@ -2,7 +2,7 @@ import {Card} from "../Card/Card";
 import style from "./Cards.module.css";
 
 function Cards(props) {
-  const { characters, onClose } = props;
+  const { characters, onClose, selectCharacter} = props;
 
   let containerClass = style.container;
 
@@ -25,6 +25,7 @@ function Cards(props) {
               name={name}
               image={image}
               onClose={onClose}
+              selectCharacter={selectCharacter}
             />
           );
         }
