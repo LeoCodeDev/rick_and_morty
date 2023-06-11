@@ -1,5 +1,5 @@
 .container {
-  margin-top: 25px;
+  margin-top: 15px;
   width: 270px;
   display: flex;
   flex-direction: column;
@@ -14,13 +14,12 @@
   list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 0 auto 15px;
+  margin: 0 0 15px;
 }
 
 .list > li:last-child {
-    display: flex;
-    align-items: center;
-    grid-column: 1 / span -1;
+    width: 100%;
+    grid-column: span 2;
 }
 
 .list > li {

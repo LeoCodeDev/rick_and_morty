@@ -25,11 +25,7 @@ function App() {
 
     axios(`https://rickandmortyapi.com/api/character/${id}`).then(
       ({ data }) => {
-        if (data.name) {
-          setCharacters((oldChars) => [data,...oldChars]);
-        } else {
-          window.alert("¡No hay personajes con este ID!");
-        }
+        setCharacters((oldChars) => [data, ...oldChars]);
       }
     );
   }

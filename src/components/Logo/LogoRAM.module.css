@@ -3,6 +3,4 @@ svg {
     max-width: calc(100vw * 0.7);
     background: no-repeat center  url("../../assets/portal.png");
     background-size: contain;
-    margin-top: 20px;
-    /* margin-bottom: 20px; */
 }
