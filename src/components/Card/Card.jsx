@@ -7,17 +7,19 @@ function Card(props) {
     name,
     image,
     onClose,
-    selectCharacter
+    selectCharacter,
+    selected
   } = props;
+
+  console.log(selected)
   return (
     <article key={id} className={style.card}>
       <button onClick={() => onClose(id)} className={style.close}>
         X
       </button>
-      <figure onClick={() => selectCharacter(id)} className={`${style.imgContainer} ${style.hover}`}>
+      <figure onClick={() => selectCharacter(id)} className={selected ? `${style.imgContainer} ${style.selected}` : style.imgContainer}>
         <img src={image} alt={name} />
       </figure>
-      <h2 className={style.name}>{name.split(" ")[0]}</h2>
     </article>
   );
 }

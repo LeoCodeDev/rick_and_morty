@@ -11,13 +11,13 @@ function SearchBar({ onSearch }) {
   return (
     <div className={style.container}>
       <label htmlFor="searchBar" className={style.searchBarLabel}>
-        Buscar
+        Search
       </label>
       <input
         id="searchBar"
         className={style.searchBar}
         type="search"
-        placeholder="Personaje"
+        placeholder="Inser Character ID (1~826)"
         onChange={handleChange}
       />
       <button className={style.button} onClick={() => onSearch(id)}>

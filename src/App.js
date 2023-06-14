@@ -33,7 +33,7 @@ function App() {
     );
   }
 
-  const [selectedCharacter, setSelectedCharacter] = useState("");
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   const selectCharacter = (id) => {
     setSelectedCharacter(characters.find((character) => character.id === Number(id)));
@@ -58,8 +58,11 @@ function App() {
                 characters={characters}
                 onClose={onClose}
                 selectCharacter={selectCharacter}
+                selectedCharacter={selectedCharacter}
               />
-              <InfoCharacter selectedCharacter={selectedCharacter} />
+              {selectedCharacter && (
+                <InfoCharacter selectedCharacter={selectedCharacter} />
+              )}
             </>
           }
         />

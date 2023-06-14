@@ -1,6 +1,6 @@
 .card {
     width: 160px;
-    min-height: 150px;
+    max-height: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,6 +9,10 @@
 
 .card:hover > .infoContainer{
     display: flex;
+}
+
+.selected {
+    border: 3px solid rgb(68, 180, 202);
 }
 
 .close {
