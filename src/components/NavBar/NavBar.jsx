@@ -1,10 +1,22 @@
-import React from 'react'
-import { SearchBar } from '../SearchBar/SearchBar'
+import React from "react";
+import styles from "./NavBar.module.css";
+import { SearchBar } from "../SearchBar/SearchBar";
+import { Link } from "react-router-dom";
 
-const NavBar = ({onSearch}) => {
+const NavBar = ({ onSearch }) => {
   return (
-    <SearchBar onSearch={onSearch}/>
-  )
-}
+    <nav>
+      <SearchBar onSearch={onSearch} />
+      <div className={styles.buttonContainer}>
+        <Link to="/home" className="link">
+          <button className={styles.button28} >Home</button>
+        </Link>
+        <Link to="/about">
+          <button className={styles.button28}>About</button>
+        </Link>
+      </div>
+    </nav>
+  );
+};
 
-export {NavBar}
+export { NavBar };

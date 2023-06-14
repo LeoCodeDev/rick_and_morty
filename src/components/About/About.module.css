@@ -1,0 +1,61 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 2.4rem;
+}
+
+.portal {
+  width: 80%;
+  height: auto;
+  position: relative;
+  max-width: 380px;
+}
+
+.portal img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.portal::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: no-repeat center url("../../assets/portal.png");
+  background-size: contain;
+  animation: rotate 10s linear infinite;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.text {
+    margin-top: 10px;
+  width: 80%;
+}
+
+.text p {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.text p::before {
+  content: "> ";
+  color: #bfca42;
+  font-weight: 700;
+}

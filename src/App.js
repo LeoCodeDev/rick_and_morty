@@ -1,10 +1,13 @@
-import "./App.css";
 import { Cards } from "./components/Cards/Cards.jsx";
 import { LogoRAM } from "./components/Logo/LogoRAM";
 import { InfoCharacter } from "./components/InfoCharacter/InfoCharacter";
 import { NavBar } from "./components/NavBar/NavBar";
 import { useState } from "react";
+import "./App.css";
 import axios from "axios";
+import { Route, Routes } from "react-router-dom";
+import { About } from "./components/About/About.jsx";
+import { Detail } from "./components/Detail/Detail.jsx";
 // import { CursorShip } from './components/cursorShip/CursorShip';
 
 function App() {
@@ -23,30 +26,47 @@ function App() {
 
     if (existingCharacter) return;
 
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
-      ({ data }) => {
+    axios(`https://rickandmortyapi.com/api/character/${id}`)
+      .then(({ data }) => {
         setCharacters((oldChars) => [data, ...oldChars]);
       }
     );
   }
 
-  const [selectedCharacter, setSelectedCharacter] = useState('') 
+  const [selectedCharacter, setSelectedCharacter] = useState("");
 
   const selectCharacter = (id) => {
-    setSelectedCharacter(characters.find((character) => character.id === id))
+    setSelectedCharacter(characters.find((character) => character.id === Number(id)));
   };
 
   const onClose = (id) => {
-    setCharacters(characters.filter((character) => character.id !== id));
+    setCharacters(characters.filter((character) => character.id !== Number(id)));
+    setSelectedCharacter("");
   };
 
   return (
     <div className="App">
       {/* <CursorShip/> */}
       <NavBar onSearch={onSearch} />
-      <LogoRAM />
-      <Cards characters={characters} onClose={onClose} selectCharacter={selectCharacter}/>
-      <InfoCharacter selectedCharacter={selectedCharacter}/>
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <>
+              <LogoRAM />
+              <Cards
+                characters={characters}
+                onClose={onClose}
+                selectCharacter={selectCharacter}
+              />
+              <InfoCharacter selectedCharacter={selectedCharacter} />
+            </>
+          }
+        />
+        <Route path="/about" element={<About />} />
+
+        <Route path={`/detail/:id`} element={<Detail selectedCharacter={selectedCharacter}/>} />
+      </Routes>
     </div>
   );
 }

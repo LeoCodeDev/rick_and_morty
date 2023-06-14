@@ -4,11 +4,11 @@
 }
 
 .App {
-   height: 100%;
+   min-height: 100vh;
+   height: auto;
    display: flex;
    flex-direction: column;
    text-align: center;
-   /* justify-content: center; */
    align-items: center;
    background-color: rgb(27, 27, 27);
 }

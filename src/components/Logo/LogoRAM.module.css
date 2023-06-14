@@ -1,4 +1,4 @@
-svg {
+.LogoRAM {
     max-height: calc(100vh * 0.2);
     max-width: calc(100vw * 0.7);
     background: no-repeat center  url("../../assets/portal.png");

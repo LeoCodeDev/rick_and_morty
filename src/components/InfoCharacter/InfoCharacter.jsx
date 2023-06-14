@@ -1,14 +1,15 @@
 import React from "react";
 import style from "./InfoCharacter.module.css";
+import { Link } from "react-router-dom";
 
 const InfoCharacter = ({selectedCharacter}) => {
   const {
+    id,
     name,
     status,
     species,
     gender,
     origin,
-    image
   } = selectedCharacter
   return (
     <div className={style.container}>
@@ -35,9 +36,9 @@ const InfoCharacter = ({selectedCharacter}) => {
           <span className={style.optionData}>{origin?.name}</span>
         </li>
       </ul>
-      <figure className={style.selectedCharacter}>
-        <img src={image} alt={name} />
-      </figure>
+      <Link to={`/detail/${id}`}>
+      <button className={style.mInfo}>More Info...</button>
+      </Link>
     </div>
   );
 };

@@ -3,7 +3,8 @@ import style from "./LogoRAM.module.css"
 
 
 const LogoRAM = (props) => (
-  <svg
+  <svg 
+    className={style.LogoRAM}
     xmlns="http://www.w3.org/2000/svg"
     width={1000.099}
     height={305.488}
