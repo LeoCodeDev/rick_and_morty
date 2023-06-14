@@ -67,7 +67,7 @@ const Detail = ({ selectedCharacter }) => {
         <h2>Basic Info</h2>
         <ul className={styles.list}>
           <li>
-            <span className={styles.label}>Name: </span>
+            <span className={styles.label}>Status: </span>
             <span className={styles.value}>{status}</span>
             </li>
           <li>
