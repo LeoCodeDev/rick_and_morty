@@ -10,8 +10,6 @@ function Card(props) {
     selectCharacter,
     selected
   } = props;
-
-  console.log(selected)
   return (
     <article key={id} className={style.card}>
       <button onClick={() => onClose(id)} className={style.close}>
