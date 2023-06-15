@@ -66,6 +66,23 @@ function App() {
             </>
           }
         />
+        <Route
+          path="/"
+          element={
+            <>
+              <LogoRAM />
+              <Cards
+                characters={characters}
+                onClose={onClose}
+                selectCharacter={selectCharacter}
+                selectedCharacter={selectedCharacter}
+              />
+              {selectedCharacter && (
+                <InfoCharacter selectedCharacter={selectedCharacter} />
+              )}
+            </>
+          }
+        />
         <Route path="/about" element={<About />} />
 
         <Route path={`/detail/:id`} element={<Detail selectedCharacter={selectedCharacter}/>} />
