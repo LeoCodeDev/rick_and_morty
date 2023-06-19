@@ -8,6 +8,7 @@ import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import { About } from "./components/About/About.jsx";
 import { Detail } from "./components/Detail/Detail.jsx";
+import { Form } from "./components/Form/Form.jsx";
 // import { CursorShip } from './components/cursorShip/CursorShip';
 
 function App() {
@@ -47,29 +48,20 @@ function App() {
   return (
     <div className="App">
       {/* <CursorShip/> */}
-      <NavBar onSearch={onSearch} />
       <Routes>
-        <Route
-          path="/home"
+      <Route
+          path="/"
           element={
             <>
-              <LogoRAM />
-              <Cards
-                characters={characters}
-                onClose={onClose}
-                selectCharacter={selectCharacter}
-                selectedCharacter={selectedCharacter}
-              />
-              {selectedCharacter && (
-                <InfoCharacter selectedCharacter={selectedCharacter} />
-              )}
+              <Form/>
             </>
           }
         />
         <Route
-          path="/"
+          path="/home"
           element={
             <>
+            <NavBar onSearch={onSearch} />
               <LogoRAM />
               <Cards
                 characters={characters}
