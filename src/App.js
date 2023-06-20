@@ -2,10 +2,10 @@ import { Cards } from "./components/Cards/Cards.jsx";
 import { LogoRAM } from "./components/Logo/LogoRAM";
 import { InfoCharacter } from "./components/InfoCharacter/InfoCharacter";
 import { NavBar } from "./components/NavBar/NavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { About } from "./components/About/About.jsx";
 import { Detail } from "./components/Detail/Detail.jsx";
 import { Form } from "./components/Form/Form.jsx";
@@ -27,8 +27,8 @@ function App() {
 
     if (existingCharacter) return;
 
-    axios(`https://rickandmortyapi.com/api/character/${id}`)
-      .then(({ data }) => {
+    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+      ({ data }) => {
         setCharacters((oldChars) => [data, ...oldChars]);
       }
     );
@@ -37,23 +37,53 @@ function App() {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   const selectCharacter = (id) => {
-    setSelectedCharacter(characters.find((character) => character.id === Number(id)));
+    setSelectedCharacter(
+      characters.find((character) => character.id === Number(id))
+    );
   };
 
   const onClose = (id) => {
-    setCharacters(characters.filter((character) => character.id !== Number(id)));
+    setCharacters(
+      characters.filter((character) => character.id !== Number(id))
+    );
     setSelectedCharacter("");
   };
+
+  const navigate = useNavigate();
+
+  const [access, setAccess] = useState(false);
+  const [wrongPass, setWrongPass] = useState(false)
+
+  const credentials = {
+    email: "leocodedev@gmail.com",
+    password: "123Sal$.",
+  };
+
+  const login = (userData) => {
+    if (
+      credentials.email === userData.email &&
+      credentials.password === userData.password
+    ) {
+      setAccess(true);
+      navigate("/home");
+    }else{
+      setWrongPass(true)
+    }
+  };
+
+  useEffect(() => {
+    !access && navigate("/");
+  }, [access]);
 
   return (
     <div className="App">
       {/* <CursorShip/> */}
       <Routes>
-      <Route
+        <Route
           path="/"
           element={
             <>
-              <Form/>
+              <Form login={login} wrongPass={wrongPass}/>
             </>
           }
         />
@@ -61,7 +91,7 @@ function App() {
           path="/home"
           element={
             <>
-            <NavBar onSearch={onSearch} />
+              <NavBar onSearch={onSearch} />
               <LogoRAM />
               <Cards
                 characters={characters}
@@ -77,7 +107,10 @@ function App() {
         />
         <Route path="/about" element={<About />} />
 
-        <Route path={`/detail/:id`} element={<Detail selectedCharacter={selectedCharacter}/>} />
+        <Route
+          path={`/detail/:id`}
+          element={<Detail selectedCharacter={selectedCharacter} />}
+        />
       </Routes>
     </div>
   );

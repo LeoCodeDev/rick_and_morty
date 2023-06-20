@@ -17,7 +17,7 @@ function SearchBar({ onSearch }) {
         id="searchBar"
         className={style.searchBar}
         type="search"
-        placeholder="Inser Character ID (1~826)"
+        placeholder="Insert Character ID (1~826)"
         onChange={handleChange}
       />
       <button className={style.button} onClick={() => onSearch(id)}>
