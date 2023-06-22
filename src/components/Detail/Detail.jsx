@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styles from "./Detail.module.css";
+import { Back } from "../../Back/Back";
 
 const Detail = ({ selectedCharacter }) => {
   const {
@@ -58,6 +59,8 @@ const Detail = ({ selectedCharacter }) => {
   }, [location.url]);
 
   return (
+    <>
+      <Back isColor='blue'/>
     <section className={styles.detailContainer}>
       <h1 className={styles.detailTitle}>{name}</h1>
       <figure className={styles.detailImage}>
@@ -143,6 +146,7 @@ const Detail = ({ selectedCharacter }) => {
         </ul>
       </article>
     </section>
+    </>
   );
 };
 

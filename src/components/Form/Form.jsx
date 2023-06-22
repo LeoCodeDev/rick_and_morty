@@ -20,7 +20,7 @@ const Form = ({login, wrongPass}) => {
       [e.target.name]: e.target.value,
     });
 
-    const validate = validation(userData);
+    const validate = validation({[e.target.name]: e.target.value});
 
     setErrors(validate);
   };

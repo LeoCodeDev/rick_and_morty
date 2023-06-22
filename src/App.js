@@ -71,6 +71,10 @@ function App() {
     }
   };
 
+  const logout = () => {
+    setAccess(false);
+  }
+
   useEffect(() => {
     !access && navigate("/");
   }, [access]);
@@ -91,7 +95,7 @@ function App() {
           path="/home"
           element={
             <>
-              <NavBar onSearch={onSearch} />
+              <NavBar onSearch={onSearch} logout={logout}/>
               <LogoRAM />
               <Cards
                 characters={characters}
@@ -102,6 +106,7 @@ function App() {
               {selectedCharacter && (
                 <InfoCharacter selectedCharacter={selectedCharacter} />
               )}
+              {/* <button>  </button> */}
             </>
           }
         />

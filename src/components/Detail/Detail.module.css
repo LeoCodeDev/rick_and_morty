@@ -1,5 +1,6 @@
 .detailContainer {
   display: flex;
+  margin-top: 36px;
   flex-direction: column;
   align-items: center;
   width: 100%;

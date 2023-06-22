@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./About.module.css";
 import Leo from "../../assets/RickMe.png";
+import { Back } from "../../Back/Back";
 
 const About = () => {
   return (
     <section className={styles.about}>
+      <Back isColor='green'/>
       <h1 className={styles.title}>
         Hi<span>,</span> I<span>'</span>m <span>Leo</span>
       </h1>

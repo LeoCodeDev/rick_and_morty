@@ -1,8 +1,8 @@
 .container {
-    height: 25px;
+    height: 45px;
     display: grid;
     grid-template-columns: auto 1fr auto auto;
-    gap: 10px;
+    gap: 8px;
     min-width: 300px;
     max-width: 70%;
     align-items: stretch;
@@ -14,7 +14,8 @@
 }
 
 .searchBarLabel{
-    grid-column: 1;
+    display: flex;
+    align-items: center;
     padding-left: 10px;
 }
 
@@ -30,7 +31,7 @@
 }
 
 .button {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     border: none;
     padding: 0;
     margin: 0;
