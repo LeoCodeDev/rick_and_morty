@@ -43,7 +43,7 @@ p span {
   height: 80%;
   background: no-repeat center url("../../assets/portal.png");
   background-size: contain;
-  animation: rotate 10s linear infinite;
+  animation: rotate 20s linear infinite;
   z-index: 1;
 }
 

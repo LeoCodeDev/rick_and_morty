@@ -20,9 +20,12 @@ const Form = ({login, wrongPass}) => {
       [e.target.name]: e.target.value,
     });
 
-    const validate = validation({[e.target.name]: e.target.value});
-
-    setErrors(validate);
+    setErrors(
+      validation({
+        ...userData,
+        [e.target.name]: e.target.value,
+      })
+    );
   };
 
   const submitHandler = (e) => {
