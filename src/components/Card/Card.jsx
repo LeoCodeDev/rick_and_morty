@@ -58,7 +58,7 @@ function Card(props) {
         className={`${style.heart} ${isFav && style.isFav}`}
         onClick={handleFavorite}
       >
-        ❤
+        {isFav ? "❤️" : "🤍"}
       </button>
       {pathname === "/favorites" && (
         <InfoCharacter

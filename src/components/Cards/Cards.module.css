@@ -15,12 +15,11 @@
 
   .containerFavorites {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 24px;
     padding: 10px 5px;
-    min-width: 100vw;
-  }
-
-  @media (min-with: 768px){
-    
+    max-width: 85vw;
+    flex-wrap: wrap;
+    align-self: center;
+    justify-content: center;
   }
