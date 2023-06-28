@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Rick & Morty",
+  "name": "Proyecto de Rick & Morty de Leopoldo Martinez",
   "icons": [
     {
       "src": "favicon.ico",
