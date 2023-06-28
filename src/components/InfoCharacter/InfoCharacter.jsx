@@ -1,16 +1,22 @@
 import React from "react";
-import style from "./InfoCharacter.module.css";
-import { Link } from "react-router-dom";
+import styleFav from "./InfoCharacterFav.module.css";
+import styleHome from "./InfoCharacter.module.css";
+import { Link, useLocation } from "react-router-dom";
 
-const InfoCharacter = ({selectedCharacter}) => {
-  const {
-    id,
-    name,
-    status,
-    species,
-    gender,
-    origin,
-  } = selectedCharacter
+const InfoCharacter = ({ selectedCharacter}) => {
+  const { id, name, status, species, gender, origin, selectCharacter } = selectedCharacter;
+  
+  const { pathname } = useLocation();
+  
+  const style = pathname === "/favorites" ? styleFav : styleHome;
+  
+  const handleClick = () => {
+    if(pathname !== "/favorites"){
+      return
+    }
+    selectCharacter(id)
+  };
+
   return (
     <div className={style.container}>
       <h3>Character Info</h3>
@@ -37,7 +43,9 @@ const InfoCharacter = ({selectedCharacter}) => {
         </li>
       </ul>
       <Link to={`/detail/${id}`}>
-      <button className={style.mInfo}>More Info...</button>
+        <button className={style.mInfo} onClick={handleClick}>
+          More Info...
+        </button>
       </Link>
     </div>
   );

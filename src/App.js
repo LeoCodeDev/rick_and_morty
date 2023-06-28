@@ -37,6 +37,8 @@ function App() {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   const selectCharacter = (id) => {
+    if (selectedCharacter && selectedCharacter.id === Number(id))
+      return setSelectedCharacter("");
     setSelectedCharacter(
       characters.find((character) => character.id === Number(id))
     );
@@ -52,7 +54,7 @@ function App() {
   const navigate = useNavigate();
 
   const [access, setAccess] = useState(false);
-  const [wrongPass, setWrongPass] = useState(false)
+  const [wrongPass, setWrongPass] = useState(false);
 
   const credentials = {
     email: "leocodedev@gmail.com",
@@ -66,14 +68,14 @@ function App() {
     ) {
       setAccess(true);
       navigate("/home");
-    }else{
-      setWrongPass(true)
+    } else {
+      setWrongPass(true);
     }
   };
 
   const logout = () => {
     setAccess(false);
-  }
+  };
 
   useEffect(() => {
     !access && navigate("/");
@@ -87,7 +89,7 @@ function App() {
           path="/"
           element={
             <>
-              <Form login={login} wrongPass={wrongPass}/>
+              <Form login={login} wrongPass={wrongPass} />
             </>
           }
         />
@@ -95,7 +97,7 @@ function App() {
           path="/home"
           element={
             <>
-              <NavBar onSearch={onSearch} logout={logout}/>
+              <NavBar onSearch={onSearch} logout={logout} />
               <LogoRAM />
               <Cards
                 characters={characters}
@@ -106,15 +108,31 @@ function App() {
               {selectedCharacter && (
                 <InfoCharacter selectedCharacter={selectedCharacter} />
               )}
-              {/* <button>  </button> */}
             </>
           }
         />
+
         <Route path="/about" element={<About />} />
 
         <Route
           path={`/detail/:id`}
           element={<Detail selectedCharacter={selectedCharacter} />}
+        />
+
+        <Route
+          path="/favorites"
+          element={
+            <>
+              <NavBar onSearch={onSearch} logout={logout} />
+              <Cards
+                characters={characters}
+                onClose={onClose}
+                selectCharacter={selectCharacter}
+                selectedCharacter={selectedCharacter}
+                setSelectedCharacter={setSelectedCharacter}
+              />
+            </>
+          }
         />
       </Routes>
     </div>

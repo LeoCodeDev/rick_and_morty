@@ -3,16 +3,20 @@
     overflow-x: auto;
     scroll-behavior: smooth;
     white-space: nowrap;
-    width: 100vw;
+    max-width: 100vw;
     gap: 24px;
     padding: 10px 24px;
-  }
-
-  .centered {
-    padding-top: 20px;
-    justify-content: center;
+    margin-top: 20px;
   }
 
   .container::-webkit-scrollbar {
     display: none;
+  }
+
+  .containerFavorites {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 10px 5px;
+    max-width: 100vw;
   }

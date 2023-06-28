@@ -8,11 +8,14 @@ const NavBar = ({ onSearch, logout }) => {
     <nav>
       <SearchBar onSearch={onSearch} />
       <div className={styles.buttonContainer}>
-        <Link to="/home" className="link">
+        <Link to="/home">
           <button className={styles.button28}>Home</button>
         </Link>
         <Link to="/about">
           <button className={styles.button28}>About</button>
+        </Link>
+        <Link to="/favorites">
+          <button className={styles.button28}>Favorites</button>
         </Link>
         <button className={styles.button28} onClick={logout}>Logout</button>
       </div>

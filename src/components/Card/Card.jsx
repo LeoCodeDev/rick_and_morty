@@ -1,8 +1,10 @@
 import React from "react";
-import style from "./Card.module.css";
+import styleFav from "./CardFav.module.css";
+import styleHome from "./Card.module.css";
 import { addFav, removeFav } from "../../redux/actions";
-import { AiTwotoneHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { InfoCharacter } from "../InfoCharacter/InfoCharacter";
 
 function Card(props) {
   const {
@@ -14,11 +16,15 @@ function Card(props) {
     selected,
   } = props;
 
+  const { pathname } = useLocation();
+
+  const style = pathname === "/favorites" ? styleFav : styleHome;
+
   const dispatch = useDispatch();
 
-  const myFavorites = useSelector(state => state.myFavorites)
+  const myFavorites = useSelector((state) => state.myFavorites);
 
-  const isFav = myFavorites.some(fav => fav.id === id)
+  const isFav = myFavorites.some((fav) => fav.id === id);
 
   const handleFavorite = () => {
     if (!isFav) {
@@ -28,9 +34,14 @@ function Card(props) {
     }
   };
 
+  const handleOnClose = (id) => {
+    onClose(id);
+    dispatch(removeFav(id));
+  };
+
   return (
     <article key={id} className={style.card}>
-      <button onClick={() => onClose(id)} className={style.close}>
+      <button onClick={() => handleOnClose(id)} className={style.close}>
         X
       </button>
       <figure
@@ -43,9 +54,18 @@ function Card(props) {
       >
         <img src={image} alt={name} />
       </figure>
-      <button className={style.heart} onClick={handleFavorite}>
-        <AiTwotoneHeart fill={isFav ? "red" : "white"}/>
+      <button
+        className={`${style.heart} ${isFav && style.isFav}`}
+        onClick={handleFavorite}
+      >
+        ❤
       </button>
+      {pathname === "/favorites" && (
+        <InfoCharacter
+          key={id}
+          selectedCharacter={props}
+        />
+      )}
     </article>
   );
 }
