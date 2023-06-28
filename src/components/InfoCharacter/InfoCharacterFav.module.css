@@ -1,6 +1,6 @@
 .container {
-    margin-top: 15px;
-    width: 270px;
+    margin-top: 10px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +14,9 @@
     list-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 0 0 15px;
+    margin: 5px 0 5px;
+    width: 100%;
+    place-items: center;
   }
   
   .list > li:last-child {
@@ -25,7 +27,7 @@
   .list > li {
     display: flex;
     flex-direction: column;
-    width: 100px;
+    width: 50%;
   }
   
   .option {

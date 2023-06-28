@@ -89,7 +89,7 @@ function App() {
           path="/"
           element={
             <>
-              <Form login={login} wrongPass={wrongPass} />
+              <Form login={login} wrongPass={wrongPass} setWrongPass={setWrongPass}/>
             </>
           }
         />

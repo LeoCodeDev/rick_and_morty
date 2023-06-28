@@ -3,7 +3,7 @@ import styles from "./Form.module.css";
 import { LogoRAM } from "../Logo/LogoRAM";
 import { validation } from "./validation";
 
-const Form = ({login, wrongPass}) => {
+const Form = ({ login, wrongPass, setWrongPass }) => {
   const [userData, setUserData] = React.useState({
     email: "",
     password: "",
@@ -36,14 +36,16 @@ const Form = ({login, wrongPass}) => {
 
     const hasErrors = Object.keys(validate).length > 0;
 
-    if(!hasErrors){
-      login(userData)
+    if (!hasErrors) {
+      login(userData);
     }
   };
 
   return (
     <div className={styles.formContainer}>
-      <section className={styles.formSection}>
+      <section 
+        className={`${styles.formSection} ${wrongPass && styles.wrongPass}`} 
+        onAnimationEnd={()=>{setWrongPass(false)}}>
         <LogoRAM />
         <form onSubmit={submitHandler} className={styles.form}>
           <label htmlFor="" className={styles.formLabel}>

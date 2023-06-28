@@ -18,5 +18,9 @@
     flex-direction: column;
     gap: 24px;
     padding: 10px 5px;
-    max-width: 100vw;
+    min-width: 100vw;
+  }
+
+  @media (min-with: 768px){
+    
   }
