@@ -3,8 +3,8 @@
     display: grid;
     grid-template-columns: auto 1fr auto auto;
     gap: 8px;
+    width: 50%;
     min-width: 300px;
-    max-width: 70%;
     align-items: stretch;
     border-radius: 24px;
     padding: 4px;
@@ -22,7 +22,8 @@
 .searchBar {
     width: 100%;
     border: none;
-    background-color: transparent; 
+    text-align: center;
+    background-color: transparent;
 }
 
 .searchBar:focus {

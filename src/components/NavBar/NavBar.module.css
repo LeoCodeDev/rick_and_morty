@@ -59,3 +59,34 @@ nav {
   box-shadow: none;
   transform: translateY(0);
 }
+
+.listContainer{
+  display: flex;
+  gap: 20px;
+
+  & > label {
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+  }
+}
+
+.list{
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid;
+  height: 24px;
+  outline: none;
+
+  & > option {
+    background-color: rgb(27, 27, 27);
+    text-align: center;
+  }
+
+  &:focus{
+    border: 1px solid;
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./About.module.css";
 import Leo from "../../assets/RickMe.png";
-import { Back } from "../../Back/Back";
+import { Back } from "../Back/Back";
 
 const About = () => {
   return (

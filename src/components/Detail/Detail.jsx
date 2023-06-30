@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styles from "./Detail.module.css";
-import { Back } from "../../Back/Back";
+import { Back } from "../Back/Back";
 
 const Detail = ({ selectedCharacter }) => {
   const {
