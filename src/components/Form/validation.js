@@ -2,7 +2,8 @@ const validation = (inputs) => {
   const { email, password } = inputs;
 
   const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-  const RegexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?.&])[A-Za-z\d@$!%*?.&]{6,10}$/;
+  const RegexPassword =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?.&])[A-Za-z\d@$!%*?.&]{6,10}$/;
 
   const errors = {};
 

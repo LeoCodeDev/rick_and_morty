@@ -1,18 +1,18 @@
 nav {
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .link {
-    display: flex;
+  display: flex;
 }
 
 .buttonContainer {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 30px;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
 }
 
 .button28 {
@@ -24,7 +24,8 @@ nav {
   color: cornsilk;
   cursor: pointer;
   display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 1.2rem;
   font-weight: 600;
   line-height: normal;
@@ -35,7 +36,7 @@ nav {
   padding: 10px 12px;
   text-align: center;
   text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -48,8 +49,8 @@ nav {
 }
 
 .button28:hover {
-  color: rgb(27,27,27);
-  border: 2px solid rgb(27,27,27);
+  color: rgb(27, 27, 27);
+  border: 2px solid rgb(27, 27, 27);
   background-color: cornsilk;
   box-shadow: rgba(191, 222, 66, 0.5) 0 8px 15px;
   transform: translateY(-2px);
@@ -60,7 +61,7 @@ nav {
   transform: translateY(0);
 }
 
-.listContainer{
+.listContainer {
   display: flex;
   gap: 20px;
 
@@ -72,7 +73,7 @@ nav {
   }
 }
 
-.list{
+.list {
   background-color: transparent;
   text-align: center;
   font-size: 1.2rem;
@@ -86,7 +87,7 @@ nav {
     text-align: center;
   }
 
-  &:focus{
+  &:focus {
     border: 1px solid;
   }
 }

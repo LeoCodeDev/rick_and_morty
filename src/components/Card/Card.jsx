@@ -7,14 +7,7 @@ import { useLocation } from "react-router-dom";
 import { InfoCharacter } from "../InfoCharacter/InfoCharacter";
 
 function Card(props) {
-  const {
-    id,
-    name,
-    image,
-    onClose,
-    selectCharacter,
-    selected,
-  } = props;
+  const { id, name, image, onClose, selectCharacter, selected } = props;
 
   const { pathname } = useLocation();
 
@@ -61,10 +54,7 @@ function Card(props) {
         {isFav ? "❤️" : "🤍"}
       </button>
       {pathname === "/favorites" && (
-        <InfoCharacter
-          key={id}
-          selectedCharacter={props}
-        />
+        <InfoCharacter key={id} selectedCharacter={props} />
       )}
     </article>
   );

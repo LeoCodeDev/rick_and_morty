@@ -3,18 +3,19 @@ import styleFav from "./InfoCharacterFav.module.css";
 import styleHome from "./InfoCharacter.module.css";
 import { Link, useLocation } from "react-router-dom";
 
-const InfoCharacter = ({ selectedCharacter}) => {
-  const { id, name, status, species, gender, origin, selectCharacter } = selectedCharacter;
-  
+const InfoCharacter = ({ selectedCharacter }) => {
+  const { id, name, status, species, gender, origin, selectCharacter } =
+    selectedCharacter;
+
   const { pathname } = useLocation();
-  
+
   const style = pathname === "/favorites" ? styleFav : styleHome;
-  
+
   const handleClick = () => {
-    if(pathname !== "/favorites"){
-      return
+    if (pathname !== "/favorites") {
+      return;
     }
-    selectCharacter(id)
+    selectCharacter(id);
   };
 
   return (

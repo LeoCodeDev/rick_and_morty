@@ -6,7 +6,7 @@ const CursorShip = () => {
   const [position, setPosition] = React.useState({ x: 0, y: 0 });
 
   const handleMouseMove = (event) => {
-    setPosition({ x: event.clientX + 15 , y: event.clientY + 15});
+    setPosition({ x: event.clientX + 15, y: event.clientY + 15 });
   };
 
   const handleScroll = () => {
@@ -26,10 +26,7 @@ const CursorShip = () => {
   const { x, y } = position;
 
   return (
-    <div
-      className={style.spaceship}
-      style={{ left: x + 'px', top: y + 'px'}}
-    >
+    <div className={style.spaceship} style={{ left: x + "px", top: y + "px" }}>
       <img src={spaceship} alt="spaceship" />
     </div>
   );

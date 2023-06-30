@@ -60,92 +60,108 @@ const Detail = ({ selectedCharacter }) => {
 
   return (
     <>
-      <Back isColor='blue'/>
-    <section className={styles.detailContainer}>
-      <h1 className={styles.detailTitle}>{name}</h1>
-      <figure className={styles.detailImage}>
-        <img src={image} alt={name} />
-      </figure>
-      <article className={styles.detailInfo}>
-        <h2>Basic Info</h2>
-        <ul className={styles.list}>
-          <li>
-            <span className={styles.label}>Status: </span>
-            <span className={styles.value}>{status}</span>
+      <Back isColor="blue" />
+      <section className={styles.detailContainer}>
+        <h1 className={styles.detailTitle}>{name}</h1>
+        <figure className={styles.detailImage}>
+          <img src={image} alt={name} />
+        </figure>
+        <article className={styles.detailInfo}>
+          <h2>Basic Info</h2>
+          <ul className={styles.list}>
+            <li>
+              <span className={styles.label}>Status: </span>
+              <span className={styles.value}>{status}</span>
             </li>
-          <li>
-            <span className={styles.label}>Species: </span>
-            <span className={styles.value}>{species}</span>
+            <li>
+              <span className={styles.label}>Species: </span>
+              <span className={styles.value}>{species}</span>
             </li>
-          <li>
-            <span className={styles.label}>Type: </span>
-            <span className={styles.value}>{type || '???'}</span>
+            <li>
+              <span className={styles.label}>Type: </span>
+              <span className={styles.value}>{type || "???"}</span>
             </li>
-          <li>
-            <span className={styles.label}>Gender: </span>
-            <span className={styles.value}>{gender}</span>
+            <li>
+              <span className={styles.label}>Gender: </span>
+              <span className={styles.value}>{gender}</span>
             </li>
-          <li>
-            <span className={styles.label}>Location: </span>
-            <span className={styles.value}>{characterLocation.name || '???'}</span>
+            <li>
+              <span className={styles.label}>Location: </span>
+              <span className={styles.value}>
+                {characterLocation.name || "???"}
+              </span>
             </li>
-          <li>
-            <span className={styles.label}>Origin: </span>
-            <span className={styles.value}>{characterOrigin.name || '???'}</span>
+            <li>
+              <span className={styles.label}>Origin: </span>
+              <span className={styles.value}>
+                {characterOrigin.name || "???"}
+              </span>
             </li>
-        </ul>
-      </article>
-      <article className={styles.detailInfo}>
-        <h2>Origin</h2>
-        <ul className={styles.list}>
-          <li>
-            <span className={styles.label}>Type: </span>
-            <span className={styles.value}>{characterOrigin.type || '???'}</span>
+          </ul>
+        </article>
+        <article className={styles.detailInfo}>
+          <h2>Origin</h2>
+          <ul className={styles.list}>
+            <li>
+              <span className={styles.label}>Type: </span>
+              <span className={styles.value}>
+                {characterOrigin.type || "???"}
+              </span>
             </li>
-          <li>
-            <span className={styles.label}>Name: </span>
-            <span className={styles.value}>{characterOrigin.name || '???'}</span>
+            <li>
+              <span className={styles.label}>Name: </span>
+              <span className={styles.value}>
+                {characterOrigin.name || "???"}
+              </span>
             </li>
-          <li>
-            <span className={styles.label}>Dimension: </span>
-            <span className={styles.value}>{characterOrigin.dimension || '???'}</span>
+            <li>
+              <span className={styles.label}>Dimension: </span>
+              <span className={styles.value}>
+                {characterOrigin.dimension || "???"}
+              </span>
             </li>
-          <li>
-            <span className={styles.label}>Population: </span>
-            <span className={styles.value}>{characterOrigin?.residents?.length || '???'}</span>
+            <li>
+              <span className={styles.label}>Population: </span>
+              <span className={styles.value}>
+                {characterOrigin?.residents?.length || "???"}
+              </span>
             </li>
-        </ul>
-      </article>
-      <article className={styles.detailInfo}>
-        <h2>Location</h2>
-        <ul className={styles.list}>
-          <li>
-            <span className={styles.label}>Type: </span>
-            <span className={styles.value}>{characterLocation.type}</span>
+          </ul>
+        </article>
+        <article className={styles.detailInfo}>
+          <h2>Location</h2>
+          <ul className={styles.list}>
+            <li>
+              <span className={styles.label}>Type: </span>
+              <span className={styles.value}>{characterLocation.type}</span>
             </li>
-          <li>
-            <span className={styles.label}>Name: </span>
-            <span className={styles.value}>{characterLocation.name}</span>
+            <li>
+              <span className={styles.label}>Name: </span>
+              <span className={styles.value}>{characterLocation.name}</span>
             </li>
-          <li>
-            <span className={styles.label}>Dimension: </span>
-            <span className={styles.value}>{characterLocation.dimension}</span>
+            <li>
+              <span className={styles.label}>Dimension: </span>
+              <span className={styles.value}>
+                {characterLocation.dimension}
+              </span>
             </li>
-          <li>
-            <span className={styles.label}>Population: </span>
-            <span className={styles.value}>{characterLocation?.residents?.length}</span>
+            <li>
+              <span className={styles.label}>Population: </span>
+              <span className={styles.value}>
+                {characterLocation?.residents?.length}
+              </span>
             </li>
-        </ul>
-      </article>
-      <article className={styles.detailInfo}>
-        <h2>Episodes: {episode?.length}</h2>
-        <ul className={styles.episodeList}>
-          {episodes.map((ep) => (
-            <li key={ep}>{ep}</li>
-          ))}
-        </ul>
-      </article>
-    </section>
+          </ul>
+        </article>
+        <article className={styles.detailInfo}>
+          <h2>Episodes: {episode?.length}</h2>
+          <ul className={styles.episodeList}>
+            {episodes.map((ep) => (
+              <li key={ep}>{ep}</li>
+            ))}
+          </ul>
+        </article>
+      </section>
     </>
   );
 };

@@ -43,9 +43,12 @@ const Form = ({ login, wrongPass, setWrongPass }) => {
 
   return (
     <div className={styles.formContainer}>
-      <section 
-        className={`${styles.formSection} ${wrongPass && styles.wrongPass}`} 
-        onAnimationEnd={()=>{setWrongPass(false)}}>
+      <section
+        className={`${styles.formSection} ${wrongPass && styles.wrongPass}`}
+        onAnimationEnd={() => {
+          setWrongPass(false);
+        }}
+      >
         <LogoRAM />
         <form onSubmit={submitHandler} className={styles.form}>
           <label htmlFor="" className={styles.formLabel}>

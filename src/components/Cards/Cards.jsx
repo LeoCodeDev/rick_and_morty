@@ -4,13 +4,19 @@ import style from "./Cards.module.css";
 import { useSelector } from "react-redux";
 
 function Cards(props) {
-  const { characters, onClose, selectCharacter, selectedCharacter, setSelectedCharacter } = props;
+  const {
+    characters,
+    onClose,
+    selectCharacter,
+    selectedCharacter,
+    setSelectedCharacter,
+  } = props;
 
   const { pathname } = useLocation();
-  
+
   let containerClass = style.container;
 
-  if(pathname === "/favorites"){
+  if (pathname === "/favorites") {
     containerClass = style.containerFavorites;
   }
 
@@ -36,7 +42,7 @@ function Cards(props) {
             selectCharacter={selectCharacter}
             setSelectedCharacter={setSelectedCharacter}
             selected={char.id === selectedCharacter?.id}
-          />          
+          />
         );
       })}
     </section>

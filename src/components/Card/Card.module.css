@@ -1,100 +1,101 @@
 .card {
-    width: 160px;
-    max-height: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    -webkit-animation: slide-in-blurred-left 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-	        animation: slide-in-blurred-left 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  width: 160px;
+  max-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  -webkit-animation: slide-in-blurred-left 0.6s cubic-bezier(0.23, 1, 0.32, 1)
+    both;
+  animation: slide-in-blurred-left 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
 .selected {
-    border: 3px solid rgb(68, 180, 202);
+  border: 3px solid rgb(68, 180, 202);
 }
 
 .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: rgb(233, 73, 87);
-    border: none;
-    font-size: 1.4rem;
-    font-weight: 700;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(233, 73, 87);
+  border: none;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .imgContainer {
-    min-width: 80px;
-    min-height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
+  min-width: 80px;
+  min-height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
-.card img{
-    width: 100%;
-    height: 100%;
+.card img {
+  width: 100%;
+  height: 100%;
 }
 
 .heart {
-    position: absolute;
-    border: none;
-    display: flex;
-    font-size: 3rem;
-    background-color: transparent;
-    bottom: -5%;
-    width: 20%;
-    max-height: 20%;
-    align-items: center;
-    justify-content: center;
-    -webkit-text-stroke: 1px #000;
-    color: white;
+  position: absolute;
+  border: none;
+  display: flex;
+  font-size: 3rem;
+  background-color: transparent;
+  bottom: -5%;
+  width: 20%;
+  max-height: 20%;
+  align-items: center;
+  justify-content: center;
+  -webkit-text-stroke: 1px #000;
+  color: white;
 }
 
 .isFav {
-        color: rgb(233, 73, 87);
-        font-size: 3;
+  color: rgb(233, 73, 87);
+  font-size: 3;
 }
 
 @-webkit-keyframes slide-in-blurred-left {
-    0% {
-      -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
-              transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
-      -webkit-transform-origin: 100% 50%;
-              transform-origin: 100% 50%;
-      -webkit-filter: blur(40px);
-              filter: blur(40px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateX(0) scaleY(1) scaleX(1);
-              transform: translateX(0) scaleY(1) scaleX(1);
-      -webkit-transform-origin: 50% 50%;
-              transform-origin: 50% 50%;
-      -webkit-filter: blur(0);
-              filter: blur(0);
-      opacity: 1;
-    }
+  0% {
+    -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
   }
-  @keyframes slide-in-blurred-left {
-    0% {
-      -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
-              transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
-      -webkit-transform-origin: 100% 50%;
-              transform-origin: 100% 50%;
-      -webkit-filter: blur(40px);
-              filter: blur(40px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateX(0) scaleY(1) scaleX(1);
-              transform: translateX(0) scaleY(1) scaleX(1);
-      -webkit-transform-origin: 50% 50%;
-              transform-origin: 50% 50%;
-      -webkit-filter: blur(0);
-              filter: blur(0);
-      opacity: 1;
-    }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+    transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
   }
+}
+@keyframes slide-in-blurred-left {
+  0% {
+    -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+    transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
