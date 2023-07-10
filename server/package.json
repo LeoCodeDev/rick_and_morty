@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server of rick and morty's app",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoCodeDev/rick_and_morty.git"
+  },
+  "author": "Leopoldo Martinez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LeoCodeDev/rick_and_morty/issues"
+  },
+  "homepage": "https://github.com/LeoCodeDev/rick_and_morty#readme",
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

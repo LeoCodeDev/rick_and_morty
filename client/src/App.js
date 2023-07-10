@@ -1,7 +1,7 @@
 import { Cards } from "./components/Cards/Cards.jsx";
-import { LogoRAM } from "./components/Logo/LogoRAM";
-import { InfoCharacter } from "./components/InfoCharacter/InfoCharacter";
-import { NavBar } from "./components/NavBar/NavBar";
+import { LogoRAM } from "./components/Logo/LogoRAM.jsx";
+import { InfoCharacter } from "./components/InfoCharacter/InfoCharacter.jsx";
+import { NavBar } from "./components/NavBar/NavBar.jsx";
 import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
@@ -27,7 +27,8 @@ function App() {
 
     if (existingCharacter) return;
 
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+    // axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
       ({ data }) => {
         setCharacters((oldChars) => [data, ...oldChars]);
       }
