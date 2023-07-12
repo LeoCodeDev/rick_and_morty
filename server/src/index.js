@@ -13,13 +13,12 @@ const server = http
         req.url.split("/").find((elem) => !isNaN(parseInt(elem)))
       );
       const character = data.find((elem) => elem.id === id);
-        console.log(character);
       if (character) {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(character));
       } else {
-        res.writeHead(404, { "Content-Type": "test/plain" });
-        res.end("Character not found");
+        res.writeHead(404, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({error: 'Character not found'}));
       }
     }
   })

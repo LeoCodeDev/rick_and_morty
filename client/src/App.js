@@ -32,7 +32,10 @@ function App() {
       ({ data }) => {
         setCharacters((oldChars) => [data, ...oldChars]);
       }
-    );
+    )
+    .catch(({response})=>{
+      console.log(response.data)
+    })
   }
 
   const [selectedCharacter, setSelectedCharacter] = useState(null);
