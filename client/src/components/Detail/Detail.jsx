@@ -6,57 +6,42 @@ import { Back } from "../Back/Back";
 const Detail = ({ selectedCharacter }) => {
   const {
     name,
-    // id,
+    id,
     status,
     species,
     type,
     gender,
     image,
     origin,
+    originUrl,
     location,
+    locationUrl,
     episode,
   } = selectedCharacter;
 
-  const [episodes, setEpisodes] = useState([]);
+  // const URL = 'http://localhost:3001/rickandmorty/location'
 
-  React.useEffect(() => {
-    const getEpisodes = async () => {
-      const episodePromises = episode.map((ep) =>
-        axios(ep).then(({ data }) => data.name)
-      );
+  useEffect(()=>{
+    if((originUrl && locationUrl) && originUrl !== locationUrl){
 
-      try {
-        const episodes = await Promise.all(episodePromises);
-        setEpisodes(episodes);
-      } catch (error) {
+      const options = {
+        method: 'POST',
+        url: 'http://localhost:3001/rickandmorty/location',
+        headers: {'Content-Type': 'application/json'},
+        data: {
+          url1: 'https://rickandmortyapi.com/api/location/3',
+          url2: 'https://rickandmortyapi.com/api/location/2'
+        }
+      };
+      
+      axios.request(options).then(function (response) {
+        console.log(response.data);
+      }).catch(function (error) {
         console.error(error);
-      }
-    };
-
-    getEpisodes();
-  }, [episode]);
-
-  const [characterOrigin, setCharacterOrigin] = useState({});
-
-  useEffect(() => {
-    if (origin.url) {
-      const getOrigin = () =>
-        axios(origin.url).then(({ data }) => setCharacterOrigin(data));
-
-      getOrigin();
+      });
     }
-  }, [origin.url]);
-
-  const [characterLocation, setCharacterLocation] = useState({});
-
-  useEffect(() => {
-    if (location.url) {
-      const getLocation = () =>
-        axios(location.url).then(({ data }) => setCharacterLocation(data));
-
-      getLocation();
-    }
-  }, [location.url]);
+  },[originUrl,locationUrl])
+  
 
   return (
     <>
@@ -88,13 +73,13 @@ const Detail = ({ selectedCharacter }) => {
             <li>
               <span className={styles.label}>Location: </span>
               <span className={styles.value}>
-                {characterLocation.name || "???"}
+                {location || "???"}
               </span>
             </li>
             <li>
               <span className={styles.label}>Origin: </span>
               <span className={styles.value}>
-                {characterOrigin.name || "???"}
+                {origin|| "???"}
               </span>
             </li>
           </ul>
@@ -105,25 +90,25 @@ const Detail = ({ selectedCharacter }) => {
             <li>
               <span className={styles.label}>Type: </span>
               <span className={styles.value}>
-                {characterOrigin.type || "???"}
+                {0 || "???"}
               </span>
             </li>
             <li>
               <span className={styles.label}>Name: </span>
               <span className={styles.value}>
-                {characterOrigin.name || "???"}
+                {origin || "???"}
               </span>
             </li>
             <li>
               <span className={styles.label}>Dimension: </span>
               <span className={styles.value}>
-                {characterOrigin.dimension || "???"}
+                {0 || "???"}
               </span>
             </li>
             <li>
               <span className={styles.label}>Population: </span>
               <span className={styles.value}>
-                {characterOrigin?.residents?.length || "???"}
+                {0 || "???"}
               </span>
             </li>
           </ul>
@@ -133,22 +118,22 @@ const Detail = ({ selectedCharacter }) => {
           <ul className={styles.list}>
             <li>
               <span className={styles.label}>Type: </span>
-              <span className={styles.value}>{characterLocation.type}</span>
+              <span className={styles.value}>{0}</span>
             </li>
             <li>
               <span className={styles.label}>Name: </span>
-              <span className={styles.value}>{characterLocation.name}</span>
+              <span className={styles.value}>{location}</span>
             </li>
             <li>
               <span className={styles.label}>Dimension: </span>
               <span className={styles.value}>
-                {characterLocation.dimension}
+                {0}
               </span>
             </li>
             <li>
               <span className={styles.label}>Population: </span>
               <span className={styles.value}>
-                {characterLocation?.residents?.length}
+                {0}
               </span>
             </li>
           </ul>
@@ -156,7 +141,7 @@ const Detail = ({ selectedCharacter }) => {
         <article className={styles.detailInfo}>
           <h2>Episodes: {episode?.length}</h2>
           <ul className={styles.episodeList}>
-            {episodes.map((ep) => (
+            {episode.map((ep) => (
               <li key={ep}>{ep}</li>
             ))}
           </ul>

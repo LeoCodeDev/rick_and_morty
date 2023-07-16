@@ -28,14 +28,13 @@ function App() {
     if (existingCharacter) return;
 
     // axios(`https://rickandmortyapi.com/api/character/${id}`).then(
-    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
-      ({ data }) => {
+    axios(`http://localhost:3001/rickandmorty/character/${id}`)
+      .then(({ data }) => {
         setCharacters((oldChars) => [data, ...oldChars]);
-      }
-    )
-    .catch(({response})=>{
-      console.log(response.data)
-    })
+      })
+      .catch(({ response }) => {
+        console.log(response.data);
+      });
   }
 
   const [selectedCharacter, setSelectedCharacter] = useState(null);

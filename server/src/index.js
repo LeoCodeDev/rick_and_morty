@@ -1,5 +1,7 @@
 const http = require("http");
-const data = require("./utils/data.js");
+const url = require("url");
+const getCharById = require("./controllers/getCharById.js");
+const getCharDetails = require('./controllers/getCharDetails.js');
 
 const PORT = 3001;
 
@@ -12,14 +14,22 @@ const server = http
       const id = Number(
         req.url.split("/").find((elem) => !isNaN(parseInt(elem)))
       );
-      const character = data.find((elem) => elem.id === id);
-      if (character) {
-        res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(JSON.stringify(character));
-      } else {
-        res.writeHead(404, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({error: 'Character not found'}));
-      }
+      return getCharById(res,id);
+    }
+    if(req.method === 'POST' && req.url.includes("/rickandmorty/location")){
+      let body = ''
+
+      req.on('data', (chunk) => {
+        body += chunk
+      })
+
+      req.on('end', ()=> {
+        const data = JSON.parse(body)
+        const {url1, url2} = data
+        
+        return getCharDetails(res,url1,url2)
+      })
+
     }
   })
   .listen(PORT, "localhost");
