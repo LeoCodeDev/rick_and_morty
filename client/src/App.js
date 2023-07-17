@@ -104,7 +104,7 @@ function App() {
           path="/home"
           element={
             <>
-              <NavBar onSearch={onSearch} logout={logout} />
+              <NavBar onSearch={onSearch} logout={logout} setSelectedCharacter={setSelectedCharacter} />
               <LogoRAM />
               <Cards
                 characters={characters}

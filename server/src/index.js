@@ -9,6 +9,17 @@ const server = http
   .createServer((req, res) => {
     console.log(`Server raised in port ${PORT}`);
     res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*')
+    res.setHeader('Access-Control-Allow-Headers', '*')
+
+    if (req.method === 'OPTIONS') {
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      res.writeHead(204);
+      res.end();
+      return;
+    }
+    
 
     if (req.url.includes("/rickandmorty/character")) {
       const id = Number(
@@ -26,8 +37,10 @@ const server = http
       req.on('end', ()=> {
         const data = JSON.parse(body)
         const {url1, url2} = data
+        console.log(body);
         
-        return getCharDetails(res,url1,url2)
+
+        return getCharDetails(res, url1, url2)
       })
 
     }

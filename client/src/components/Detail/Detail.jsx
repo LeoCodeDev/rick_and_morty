@@ -19,29 +19,62 @@ const Detail = ({ selectedCharacter }) => {
     episode,
   } = selectedCharacter;
 
-  // const URL = 'http://localhost:3001/rickandmorty/location'
+  const [originData, setOriginData] = useState({});
+  const [locationData, setLocationData] = useState({});
 
-  useEffect(()=>{
-    if((originUrl && locationUrl) && originUrl !== locationUrl){
+  useEffect(() => {
+    const data = {
+      url1: null,
+      url2: null,
+    };
 
-      const options = {
-        method: 'POST',
-        url: 'http://localhost:3001/rickandmorty/location',
-        headers: {'Content-Type': 'application/json'},
-        data: {
-          url1: 'https://rickandmortyapi.com/api/location/3',
-          url2: 'https://rickandmortyapi.com/api/location/2'
-        }
-      };
-      
-      axios.request(options).then(function (response) {
-        console.log(response.data);
-      }).catch(function (error) {
-        console.error(error);
-      });
+    if (originUrl && locationUrl) {
+      data.url1 = originUrl;
+      data.url2 = locationUrl;
+    } else if (originUrl || locationUrl) {
+      originUrl && (data.url1 = originUrl);
+      locationUrl && (data.url2 = locationUrl);
     }
-  },[originUrl,locationUrl])
-  
+
+    (originUrl || locationUrl) &&
+      axios
+        .post("http://localhost:3001/rickandmorty/location", data)
+        .then(({ data }) => {
+          if (originUrl && locationUrl) {
+            setOriginData({
+              originDimension: data.originDimension,
+              originName: data.originName,
+              originResidents: data.originResidents,
+              originType: data.originType,
+            });
+            setLocationData({
+              locationDimension: data.locationDimension,
+              locationName: data.locationName,
+              locationResidents: data.locationResidents,
+              locationType: data.locationType,
+            });
+          } else if (originUrl || locationUrl) {
+            if (originUrl) {
+              setOriginData({
+                originDimension: data.originDimension,
+                originName: data.originName,
+                originResidents: data.originResidents,
+                originType: data.originType,
+              });
+            } else {
+              setLocationData({
+                locationDimension: data.locationDimension,
+                locationName: data.locationName,
+                locationResidents: data.locationResidents,
+                locationType: data.locationType,
+              });
+            }
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+  }, [originUrl, locationUrl]);
 
   return (
     <>
@@ -72,15 +105,11 @@ const Detail = ({ selectedCharacter }) => {
             </li>
             <li>
               <span className={styles.label}>Location: </span>
-              <span className={styles.value}>
-                {location || "???"}
-              </span>
+              <span className={styles.value}>{location || "???"}</span>
             </li>
             <li>
               <span className={styles.label}>Origin: </span>
-              <span className={styles.value}>
-                {origin|| "???"}
-              </span>
+              <span className={styles.value}>{origin || "???"}</span>
             </li>
           </ul>
         </article>
@@ -89,27 +118,19 @@ const Detail = ({ selectedCharacter }) => {
           <ul className={styles.list}>
             <li>
               <span className={styles.label}>Type: </span>
-              <span className={styles.value}>
-                {0 || "???"}
-              </span>
+              <span className={styles.value}>{originData?.originType || "???"}</span>
             </li>
             <li>
               <span className={styles.label}>Name: </span>
-              <span className={styles.value}>
-                {origin || "???"}
-              </span>
+              <span className={styles.value}>{origin || "???"}</span>
             </li>
             <li>
               <span className={styles.label}>Dimension: </span>
-              <span className={styles.value}>
-                {0 || "???"}
-              </span>
+              <span className={styles.value}>{originData?.originDimension || "???"}</span>
             </li>
             <li>
               <span className={styles.label}>Population: </span>
-              <span className={styles.value}>
-                {0 || "???"}
-              </span>
+              <span className={styles.value}>{originData?.originResidents?.length || "???"}</span>
             </li>
           </ul>
         </article>
@@ -118,7 +139,7 @@ const Detail = ({ selectedCharacter }) => {
           <ul className={styles.list}>
             <li>
               <span className={styles.label}>Type: </span>
-              <span className={styles.value}>{0}</span>
+              <span className={styles.value}>{locationData?.locationType || '???'}</span>
             </li>
             <li>
               <span className={styles.label}>Name: </span>
@@ -126,15 +147,11 @@ const Detail = ({ selectedCharacter }) => {
             </li>
             <li>
               <span className={styles.label}>Dimension: </span>
-              <span className={styles.value}>
-                {0}
-              </span>
+              <span className={styles.value}>{locationData?.locationDimension || '???'}</span>
             </li>
             <li>
               <span className={styles.label}>Population: </span>
-              <span className={styles.value}>
-                {0}
-              </span>
+              <span className={styles.value}>{locationData?.locationResidents?.length || '???'}</span>
             </li>
           </ul>
         </article>

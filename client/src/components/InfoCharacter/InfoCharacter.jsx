@@ -12,9 +12,7 @@ const InfoCharacter = ({ selectedCharacter }) => {
   const style = pathname === "/favorites" ? styleFav : styleHome;
 
   const handleClick = () => {
-    if (pathname !== "/favorites") {
-      return;
-    }
+    if (pathname !== "/favorites") return
     selectCharacter(id);
   };
 
