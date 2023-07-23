@@ -1,5 +1,4 @@
 const http = require("http");
-const url = require("url");
 const getCharById = require("./controllers/getCharById.js");
 const getCharDetails = require('./controllers/getCharDetails.js');
 
@@ -12,9 +11,9 @@ const server = http
     res.setHeader('Access-Control-Allow-Methods', '*')
     res.setHeader('Access-Control-Allow-Headers', '*')
 
+    console.log(req.method);
+
     if (req.method === 'OPTIONS') {
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
       res.writeHead(204);
       res.end();
       return;
