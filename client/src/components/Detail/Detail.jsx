@@ -6,7 +6,6 @@ import { Back } from "../Back/Back";
 const Detail = ({ selectedCharacter }) => {
   const {
     name,
-    id,
     status,
     species,
     type,
