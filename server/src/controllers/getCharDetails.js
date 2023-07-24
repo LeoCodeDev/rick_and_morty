@@ -1,6 +1,11 @@
 const axios = require("axios");
 
-const getCharDetails = (res, origin = null, location = null) => {
+const getCharDetails = (req,res) => {
+  const origin = req.query.url1 === 'null' ? null : req.query.url1
+  const location = req.query.url2 === 'null' ? null : req.query.url2
+
+  console.log(origin);
+
   const request = [];
 
   if (origin && location) {
@@ -44,14 +49,11 @@ const getCharDetails = (res, origin = null, location = null) => {
       response.locationDimension = locationResponse.data.dimension
       response.locationResidents = locationResponse.data.residents
     }
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(JSON.stringify(response))
+    res.status(200).json(response)
 
   })
   .catch((err) => {
-    console.error(err);
-    res.writeHead(500, { "Content-Type": "application/json" });
-    res.end(JSON.stringify({ error: "Internal Server Error" }));
+    res.status(500).json({error:err.message})
   });
 };
 

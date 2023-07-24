@@ -1,47 +1,18 @@
-const http = require("http");
-const getCharById = require("./controllers/getCharById.js");
-const getCharDetails = require('./controllers/getCharDetails.js');
-
+const express = require("express");
+const morgan = require("morgan");
+const cors = require('cors');
+const router = require("./routes");
+const server = express();
 const PORT = 3001;
 
-const server = http
-  .createServer((req, res) => {
-    console.log(`Server raised in port ${PORT}`);
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader('Access-Control-Allow-Methods', '*')
-    res.setHeader('Access-Control-Allow-Headers', '*')
+server.use(morgan("dev"));
 
-    console.log(req.method);
+server.use(cors())
 
-    if (req.method === 'OPTIONS') {
-      res.writeHead(204);
-      res.end();
-      return;
-    }
-    
+server.use(express.json())
 
-    if (req.url.includes("/rickandmorty/character")) {
-      const id = Number(
-        req.url.split("/").find((elem) => !isNaN(parseInt(elem)))
-      );
-      return getCharById(res,id);
-    }
-    if(req.method === 'POST' && req.url.includes("/rickandmorty/location")){
-      let body = ''
+server.use('/rickandmorty', router)
 
-      req.on('data', (chunk) => {
-        body += chunk
-      })
-
-      req.on('end', ()=> {
-        const data = JSON.parse(body)
-        const {url1, url2} = data
-        console.log(body);
-        
-
-        return getCharDetails(res, url1, url2)
-      })
-
-    }
-  })
-  .listen(PORT, "localhost");
+server.listen(PORT, () => {
+  console.log(`Server raised in port: ${PORT}`);
+});

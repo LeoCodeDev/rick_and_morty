@@ -58,21 +58,18 @@ function App() {
   const [access, setAccess] = useState(false);
   const [wrongPass, setWrongPass] = useState(false);
 
-  const credentials = {
-    email: "leocodedev@gmail.com",
-    password: "123Sal$.",
-  };
-
   const login = (userData) => {
-    if (
-      credentials.email === userData.email &&
-      credentials.password === userData.password
-    ) {
-      setAccess(true);
-      navigate("/home");
-    } else {
-      setWrongPass(true);
-    }
+    const { email, password } = userData;
+    const URL = `http://localhost:3001/rickandmorty/login/`;
+    axios(`${URL}?email=${email}&password=${password}`).then(({ data }) => {
+      const { access } = data;
+      if (access) {
+        setAccess(true);
+        navigate("/home");
+      } else {
+        setWrongPass(true);
+      }
+    });
   };
 
   const logout = () => {
@@ -103,7 +100,11 @@ function App() {
           path="/home"
           element={
             <>
-              <NavBar onSearch={onSearch} logout={logout} setSelectedCharacter={setSelectedCharacter} />
+              <NavBar
+                onSearch={onSearch}
+                logout={logout}
+                setSelectedCharacter={setSelectedCharacter}
+              />
               <LogoRAM />
               <Cards
                 characters={characters}

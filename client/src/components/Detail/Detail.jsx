@@ -23,22 +23,19 @@ const Detail = ({ selectedCharacter }) => {
   const [locationData, setLocationData] = useState({});
 
   useEffect(() => {
-    const data = {
-      url1: null,
-      url2: null,
-    };
+    let url1 = null
+    let url2 = null
 
     if (originUrl && locationUrl) {
-      data.url1 = originUrl;
-      data.url2 = locationUrl;
+      url1 = originUrl;
+      url2 = locationUrl;
     } else if (originUrl || locationUrl) {
-      originUrl && (data.url1 = originUrl);
-      locationUrl && (data.url2 = locationUrl);
+      originUrl && (url1 = originUrl);
+      locationUrl && (url2 = locationUrl);
     }
 
     (originUrl || locationUrl) &&
-      axios
-        .post("http://localhost:3001/rickandmorty/location", data)
+      axios(`http://localhost:3001/rickandmorty/location?url1=${url1}&url2=${url2}`)
         .then(({ data }) => {
           if (originUrl && locationUrl) {
             setOriginData({

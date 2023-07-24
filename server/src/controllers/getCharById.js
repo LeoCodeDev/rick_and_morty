@@ -1,8 +1,8 @@
 const axios = require("axios");
 const URL = "https://rickandmortyapi.com/api/character";
 
-const getCharById = (res, id) => {
-
+const getCharById = (req, res) => {
+  const id = Number(req.params.id);
   axios(`${URL}/${id}`)
     .then(({ data }) => {
       const {
@@ -23,35 +23,33 @@ const getCharById = (res, id) => {
       );
       Promise.all(episodesPromises)
         .then((episode) => {
-          res.writeHead(200, { "Content-Type": "application/json" });
-          res.end(
-            JSON.stringify({
-              id,
-              name,
-              status,
-              species,
-              type,
-              gender,
-              origin : origin.name,
-              originUrl : origin.url,
-              location : location.name,
-              locationUrl : location.url,
-              image,
-              episode,
-            })
-          );
+          const character = {
+            id,
+            name,
+            status,
+            species,
+            type,
+            gender,
+            origin: origin.name,
+            originUrl: origin.url,
+            location: location.name,
+            locationUrl: location.url,
+            image,
+            episode,
+          };
+
+          return character.name ? res.status(200).json(character) : res.status(404).send('Not Found')
+          
         })
         .catch((error) => {
-          console.log(error);
-          res.writeHead(500, { "Content-Type": "application/json" });
-          res.end(JSON.stringify({ error: "Internal Server Error" }));
+          console.log('uno');
+          res.status(500).json({error:error.message})
         });
-    })
-    .catch((error) => {
-      console.log(error);
-      res.writeHead(500, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ error: "Internal Server Error" }));
+      })
+      .catch((error) => {
+      console.log('dos');
+      res.status(500).json({error:error.message})
     });
 };
 
-module.exports = getCharById
+module.exports = getCharById;
