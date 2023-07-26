@@ -9,7 +9,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { About } from "./components/About/About.jsx";
 import { Detail } from "./components/Detail/Detail.jsx";
 import { Form } from "./components/Form/Form.jsx";
-// import { CursorShip } from './components/cursorShip/CursorShip';
+import { CursorShip } from './components/cursorShip/CursorShip';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -83,7 +83,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <CursorShip/> */}
+      <CursorShip/>
       <Routes>
         <Route
           path="/"
