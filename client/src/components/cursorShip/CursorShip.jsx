@@ -6,7 +6,7 @@ const CursorShip = () => {
   const [position, setPosition] = React.useState({ x: 0, y: 0 });
 
   const handleMouseMove = (event) => {
-    setPosition({ x: event.clientX + 15, y: event.clientY + 15 });
+    setPosition({ x: event.pageX + 15, y: event.pageY + 15 });
   };
 
   const handleScroll = () => {
@@ -15,11 +15,11 @@ const CursorShip = () => {
 
   React.useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("scroll", handleScroll);
+    // document.addEventListener("scroll", handleScroll);
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("scroll", handleScroll);
+      // document.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
