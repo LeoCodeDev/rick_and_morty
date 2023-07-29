@@ -24,7 +24,7 @@ const About = () => {
         </p>
         <p>
           This application has been developed for educational purposes. It was
-          built using <span>React.js, Redux, and Node.js</span>.
+          built using <span>React.js, Redux, Node.js and Express</span>.
         </p>
         <p>
           The <span>Rick and Morty's</span> information, is being bringed from{" "}

@@ -57,7 +57,8 @@ p span {
 
 .text {
   margin-top: 10px;
-  width: 80%;
+  max-width: 180ch;
+  margin: 0 30px;
 }
 
 .text p {

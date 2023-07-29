@@ -9,31 +9,33 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { About } from "./components/About/About.jsx";
 import { Detail } from "./components/Detail/Detail.jsx";
 import { Form } from "./components/Form/Form.jsx";
-import { CursorShip } from './components/cursorShip/CursorShip';
+import { CursorShip } from "./components/cursorShip/CursorShip";
 
 function App() {
   const [characters, setCharacters] = useState([]);
 
-  function onSearch(id) {
-    if (id === "") return;
-    if (id > 826) {
-      window.alert("¡Ese personaje no existe!");
-      return;
+  async function onSearch(id) {
+    try {
+      if (id === "") return;
+      if (id > 826) {
+        window.alert("¡Ese personaje no existe!");
+        return;
+      }
+
+      const existingCharacter = characters.find(
+        (character) => character.id === Number(id)
+      );
+
+      if (existingCharacter) return;
+
+      const { data } = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+
+      setCharacters((oldChars) => [data, ...oldChars]);
+    } catch (error) {
+      console.log({ error });
     }
-
-    const existingCharacter = characters.find(
-      (character) => character.id === Number(id)
-    );
-
-    if (existingCharacter) return;
-
-    axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(({ data }) => {
-        setCharacters((oldChars) => [data, ...oldChars]);
-      })
-      .catch(({ response }) => {
-        console.log(response.data);
-      });
   }
 
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -58,18 +60,23 @@ function App() {
   const [access, setAccess] = useState(false);
   const [wrongPass, setWrongPass] = useState(false);
 
-  const login = (userData) => {
-    const { email, password } = userData;
-    const URL = `http://localhost:3001/rickandmorty/login/`;
-    axios(`${URL}?email=${email}&password=${password}`).then(({ data }) => {
-      const { access } = data;
-      if (access) {
+  const login = async (userData) => {
+    try {
+      const { email, password } = userData;
+      const URL = `http://localhost:3001/rickandmorty/login/`;
+      const { data } = await axios(
+        `${URL}?email=${email}&password=${password}`
+      );
+
+      if (data.access) {
         setAccess(true);
         navigate("/home");
       } else {
         setWrongPass(true);
       }
-    });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const logout = () => {
@@ -82,7 +89,7 @@ function App() {
 
   return (
     <div className="App">
-      <CursorShip/>
+      <CursorShip />
       <Routes>
         <Route
           path="/"

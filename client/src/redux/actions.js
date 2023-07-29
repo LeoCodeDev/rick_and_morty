@@ -7,26 +7,31 @@ const ORDER = "ORDER";
 
 const addFav = (character) => {
   const endPoint = 'http://localhost:3001/rickandmorty/fav'
-  return (dispatch)=>{
-    axios.post(endPoint, character)
-    .then(({data})=>{
-      return dispatch({
+  return async (dispatch)=>{
+    try {
+      const {data} = await axios.post(endPoint, character)
+      dispatch({
         type: ADD_FAV,
         payload: data
       })
-    })
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
 const removeFav = (id) => {
   const endPoint = `http://localhost:3001/rickandmorty/fav/${id}`
-  return (dispatch)=>{
-    axios.delete(endPoint).then(({data})=>{
-      return dispatch({
-        type: 'REMOVE_FAV',
-        payload: data
-      })
-    })
+  return async (dispatch)=>{
+    try {
+      const {data} = await axios.delete(endPoint)
+        dispatch({
+          type: 'REMOVE_FAV',
+          payload: data
+        })
+    } catch (error) {
+      console.log(console.error(error));
+    }
   }
 };
 
