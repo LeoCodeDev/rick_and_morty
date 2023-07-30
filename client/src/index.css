@@ -10,7 +10,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: cornsilk;
+  ::-webkit-scrollbar{
+  display: none;
+  }
 }
+
 
 html,
 body,

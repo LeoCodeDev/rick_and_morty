@@ -1,7 +1,7 @@
 import { Cards } from "./components/Cards/Cards.jsx";
-import { LogoRAM } from "./components/Logo/LogoRAM";
-import { InfoCharacter } from "./components/InfoCharacter/InfoCharacter";
-import { NavBar } from "./components/NavBar/NavBar";
+import { LogoRAM } from "./components/Logo/LogoRAM.jsx";
+import { InfoCharacter } from "./components/InfoCharacter/InfoCharacter.jsx";
+import { NavBar } from "./components/NavBar/NavBar.jsx";
 import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
@@ -9,29 +9,33 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { About } from "./components/About/About.jsx";
 import { Detail } from "./components/Detail/Detail.jsx";
 import { Form } from "./components/Form/Form.jsx";
-import { CursorShip } from './components/cursorShip/CursorShip';
+import { CursorShip } from "./components/cursorShip/CursorShip";
 
 function App() {
   const [characters, setCharacters] = useState([]);
 
-  function onSearch(id) {
-    if (id === "") return;
-    if (id > 826) {
-      window.alert("¡Ese personaje no existe!");
-      return;
-    }
-
-    const existingCharacter = characters.find(
-      (character) => character.id === Number(id)
-    );
-
-    if (existingCharacter) return;
-
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
-      ({ data }) => {
-        setCharacters((oldChars) => [data, ...oldChars]);
+  async function onSearch(id) {
+    try {
+      if (id === "") return;
+      if (id > 826) {
+        window.alert("¡Ese personaje no existe!");
+        return;
       }
-    );
+
+      const existingCharacter = characters.find(
+        (character) => character.id === Number(id)
+      );
+
+      if (existingCharacter) return;
+
+      const { data } = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+
+      setCharacters((oldChars) => [data, ...oldChars]);
+    } catch (error) {
+      console.log({ error });
+    }
   }
 
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -56,20 +60,22 @@ function App() {
   const [access, setAccess] = useState(false);
   const [wrongPass, setWrongPass] = useState(false);
 
-  const credentials = {
-    email: "leocodedev@gmail.com",
-    password: "123Sal$.",
-  };
+  const login = async (userData) => {
+    try {
+      const { email, password } = userData;
+      const URL = `http://localhost:3001/rickandmorty/login/`;
+      const { data } = await axios(
+        `${URL}?email=${email}&password=${password}`
+      );
 
-  const login = (userData) => {
-    if (
-      credentials.email === userData.email &&
-      credentials.password === userData.password
-    ) {
-      setAccess(true);
-      navigate("/home");
-    } else {
-      setWrongPass(true);
+      if (data.access) {
+        setAccess(true);
+        navigate("/home");
+      } else {
+        setWrongPass(true);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -83,7 +89,7 @@ function App() {
 
   return (
     <div className="App">
-      <CursorShip/>
+      <CursorShip />
       <Routes>
         <Route
           path="/"
@@ -101,7 +107,11 @@ function App() {
           path="/home"
           element={
             <>
-              <NavBar onSearch={onSearch} logout={logout} />
+              <NavBar
+                onSearch={onSearch}
+                logout={logout}
+                setSelectedCharacter={setSelectedCharacter}
+              />
               <LogoRAM />
               <Cards
                 characters={characters}

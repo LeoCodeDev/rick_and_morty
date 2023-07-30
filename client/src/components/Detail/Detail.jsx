@@ -6,57 +6,71 @@ import { Back } from "../Back/Back";
 const Detail = ({ selectedCharacter }) => {
   const {
     name,
-    // id,
     status,
     species,
     type,
     gender,
     image,
     origin,
+    originUrl,
     location,
+    locationUrl,
     episode,
   } = selectedCharacter;
 
-  const [episodes, setEpisodes] = useState([]);
-
-  React.useEffect(() => {
-    const getEpisodes = async () => {
-      const episodePromises = episode.map((ep) =>
-        axios(ep).then(({ data }) => data.name)
-      );
-
-      try {
-        const episodes = await Promise.all(episodePromises);
-        setEpisodes(episodes);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getEpisodes();
-  }, [episode]);
-
-  const [characterOrigin, setCharacterOrigin] = useState({});
+  const [originData, setOriginData] = useState({});
+  const [locationData, setLocationData] = useState({});
 
   useEffect(() => {
-    if (origin.url) {
-      const getOrigin = () =>
-        axios(origin.url).then(({ data }) => setCharacterOrigin(data));
+    let url1 = null
+    let url2 = null
 
-      getOrigin();
+    if (originUrl && locationUrl) {
+      url1 = originUrl;
+      url2 = locationUrl;
+    } else if (originUrl || locationUrl) {
+      originUrl && (url1 = originUrl);
+      locationUrl && (url2 = locationUrl);
     }
-  }, [origin.url]);
 
-  const [characterLocation, setCharacterLocation] = useState({});
-
-  useEffect(() => {
-    if (location.url) {
-      const getLocation = () =>
-        axios(location.url).then(({ data }) => setCharacterLocation(data));
-
-      getLocation();
-    }
-  }, [location.url]);
+    (originUrl || locationUrl) &&
+      axios(`http://localhost:3001/rickandmorty/location?url1=${url1}&url2=${url2}`)
+        .then(({ data }) => {
+          if (originUrl && locationUrl) {
+            setOriginData({
+              originDimension: data.originDimension,
+              originName: data.originName,
+              originResidents: data.originResidents,
+              originType: data.originType,
+            });
+            setLocationData({
+              locationDimension: data.locationDimension,
+              locationName: data.locationName,
+              locationResidents: data.locationResidents,
+              locationType: data.locationType,
+            });
+          } else if (originUrl || locationUrl) {
+            if (originUrl) {
+              setOriginData({
+                originDimension: data.originDimension,
+                originName: data.originName,
+                originResidents: data.originResidents,
+                originType: data.originType,
+              });
+            } else {
+              setLocationData({
+                locationDimension: data.locationDimension,
+                locationName: data.locationName,
+                locationResidents: data.locationResidents,
+                locationType: data.locationType,
+              });
+            }
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+  }, [originUrl, locationUrl]);
 
   return (
     <>
@@ -87,15 +101,11 @@ const Detail = ({ selectedCharacter }) => {
             </li>
             <li>
               <span className={styles.label}>Location: </span>
-              <span className={styles.value}>
-                {characterLocation.name || "???"}
-              </span>
+              <span className={styles.value}>{location || "???"}</span>
             </li>
             <li>
               <span className={styles.label}>Origin: </span>
-              <span className={styles.value}>
-                {characterOrigin.name || "???"}
-              </span>
+              <span className={styles.value}>{origin || "???"}</span>
             </li>
           </ul>
         </article>
@@ -104,27 +114,19 @@ const Detail = ({ selectedCharacter }) => {
           <ul className={styles.list}>
             <li>
               <span className={styles.label}>Type: </span>
-              <span className={styles.value}>
-                {characterOrigin.type || "???"}
-              </span>
+              <span className={styles.value}>{originData?.originType || "???"}</span>
             </li>
             <li>
               <span className={styles.label}>Name: </span>
-              <span className={styles.value}>
-                {characterOrigin.name || "???"}
-              </span>
+              <span className={styles.value}>{origin || "???"}</span>
             </li>
             <li>
               <span className={styles.label}>Dimension: </span>
-              <span className={styles.value}>
-                {characterOrigin.dimension || "???"}
-              </span>
+              <span className={styles.value}>{originData?.originDimension || "???"}</span>
             </li>
             <li>
               <span className={styles.label}>Population: </span>
-              <span className={styles.value}>
-                {characterOrigin?.residents?.length || "???"}
-              </span>
+              <span className={styles.value}>{originData?.originResidents?.length || "???"}</span>
             </li>
           </ul>
         </article>
@@ -133,30 +135,26 @@ const Detail = ({ selectedCharacter }) => {
           <ul className={styles.list}>
             <li>
               <span className={styles.label}>Type: </span>
-              <span className={styles.value}>{characterLocation.type}</span>
+              <span className={styles.value}>{locationData?.locationType || '???'}</span>
             </li>
             <li>
               <span className={styles.label}>Name: </span>
-              <span className={styles.value}>{characterLocation.name}</span>
+              <span className={styles.value}>{location}</span>
             </li>
             <li>
               <span className={styles.label}>Dimension: </span>
-              <span className={styles.value}>
-                {characterLocation.dimension}
-              </span>
+              <span className={styles.value}>{locationData?.locationDimension || '???'}</span>
             </li>
             <li>
               <span className={styles.label}>Population: </span>
-              <span className={styles.value}>
-                {characterLocation?.residents?.length}
-              </span>
+              <span className={styles.value}>{locationData?.locationResidents?.length || '???'}</span>
             </li>
           </ul>
         </article>
         <article className={styles.detailInfo}>
           <h2>Episodes: {episode?.length}</h2>
           <ul className={styles.episodeList}>
-            {episodes.map((ep) => (
+            {episode.map((ep) => (
               <li key={ep}>{ep}</li>
             ))}
           </ul>

@@ -5,7 +5,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { Link, useLocation } from "react-router-dom";
 import { filterCards, orderCards } from "../../redux/actions";
 
-const NavBar = ({ onSearch, logout }) => {
+const NavBar = ({ onSearch, logout, setSelectedCharacter }) => {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const [aux, setAux] = React.useState(false);
@@ -18,6 +18,10 @@ const NavBar = ({ onSearch, logout }) => {
     setAux(!aux);
     dispatch(orderCards(e.target.value));
   };
+
+  const handlerClick = ()=> {
+    setSelectedCharacter("")
+  }
 
   return (
     <nav>
@@ -35,7 +39,7 @@ const NavBar = ({ onSearch, logout }) => {
           <button className={styles.button28}>About</button>
         </Link>
         <Link to="/favorites">
-          <button className={styles.button28}>Favorites</button>
+          <button className={styles.button28} onClick={handlerClick}>Favorites</button>
         </Link>
         <button className={styles.button28} onClick={logout}>
           Logout
