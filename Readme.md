@@ -40,10 +40,6 @@ El código fuente de este proyecto se encuentra alojado en GitHub como repositor
 
 El proyecto se encuentra desplegado en Vercel.
 
-## Contribución
-
-Si deseas contribuir a este proyecto, ¡eres bienvenido! Siempre estamos abiertos a nuevas ideas y sugerencias. Por favor, sigue los lineamientos de contribución del repositorio.
-
 ## Aviso Legal
 
 Rick and Morty es una marca registrada de sus respectivos propietarios y esta aplicación es un proyecto no oficial, creado únicamente con fines educativos.
