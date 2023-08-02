@@ -6,7 +6,6 @@ import { Link, useLocation } from "react-router-dom";
 const InfoCharacter = ({ selectedCharacter }) => {
   const { id, name, status, species, gender, origin, selectCharacter } =
     selectedCharacter;
-
   const { pathname } = useLocation();
 
   const style = pathname === "/favorites" ? styleFav : styleHome;
@@ -38,7 +37,7 @@ const InfoCharacter = ({ selectedCharacter }) => {
         </li>
         <li>
           <span className={style.option}>Planet: </span>
-          <span className={style.optionData}>{origin?.name}</span>
+          <span className={style.optionData}>{origin || "???"}</span>
         </li>
       </ul>
       <Link to={`/detail/${id}`}>

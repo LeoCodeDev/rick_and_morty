@@ -75,7 +75,7 @@ function App() {
         setWrongPass(true);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
