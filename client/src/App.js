@@ -34,7 +34,7 @@ function App() {
 
       setCharacters((oldChars) => [data, ...oldChars]);
     } catch (error) {
-      console.log({ error });
+      console.log({ error: error.message });
     }
   }
 
@@ -67,7 +67,6 @@ function App() {
       const { data } = await axios(
         `${URL}?email=${email}&password=${password}`
       );
-
       if (data.access) {
         setAccess(true);
         navigate("/home");
@@ -75,6 +74,7 @@ function App() {
         setWrongPass(true);
       }
     } catch (error) {
+      setWrongPass(true)
       console.log(error.message);
     }
   };

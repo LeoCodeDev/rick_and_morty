@@ -10,12 +10,13 @@ const addFav = (character) => {
   return async (dispatch)=>{
     try {
       const {data} = await axios.post(endPoint, character)
+      console.log(data);
       dispatch({
         type: ADD_FAV,
         payload: data
       })
     } catch (error) {
-      console.log(error);
+      console.log({error: error.message});
     }
   };
 };

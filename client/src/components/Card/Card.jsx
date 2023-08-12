@@ -7,7 +7,21 @@ import { useLocation } from "react-router-dom";
 import { InfoCharacter } from "../InfoCharacter/InfoCharacter";
 
 function Card(props) {
-  const { id, name, image, onClose, selectCharacter, selected } = props;
+  const {
+    id,
+    name,
+    status,
+    species,
+    type,
+    gender,
+    image,
+    location,
+    origin,
+    episode,
+    onClose,
+    selectCharacter,
+    selected,
+  } = props;
 
   const { pathname } = useLocation();
 
@@ -21,7 +35,20 @@ function Card(props) {
 
   const handleFavorite = () => {
     if (!isFav) {
-      dispatch(addFav(props));
+      dispatch(
+        addFav({
+          id,
+          name,
+          status,
+          species,
+          type,
+          gender,
+          image,
+          location,
+          origin,
+          episode,
+        })
+      );
     } else if (isFav) {
       dispatch(removeFav(id));
     }
