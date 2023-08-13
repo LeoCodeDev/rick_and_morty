@@ -12,7 +12,21 @@ import { Form } from "./components/Form/Form.jsx";
 import { CursorShip } from "./components/cursorShip/CursorShip";
 
 function App() {
+
   const [characters, setCharacters] = useState([]);
+
+  
+    async function fetchFavorites() {
+      try {
+        const response = await axios.get("http://localhost:3001/rickandmorty/fav");
+
+        // Aquí asumimos que el resultado de la petición contiene un array de personajes favoritos
+        setCharacters(response.data);
+      } catch (error) {
+        console.error("Error fetching favorites:", error.message);
+      }
+    }
+  
 
   async function onSearch(id) {
     try {
@@ -70,6 +84,7 @@ function App() {
       if (data.access) {
         setAccess(true);
         navigate("/home");
+        fetchFavorites();
       } else {
         setWrongPass(true);
       }
