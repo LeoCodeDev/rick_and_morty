@@ -11,7 +11,6 @@ Rick and Morty's App es una aplicación que consume la API pública de Rick and 
 ### Lado del cliente
 
 - React
-- React Icons
 - Redux
 - Axios
 - CSS Modules
@@ -21,8 +20,6 @@ Rick and Morty's App es una aplicación que consume la API pública de Rick and 
 ### Lado del servidor
 
 - Express
-- Jest (para pruebas)
-- SuperTest (para pruebas)
 - CORS
 - Axios
 - Morgan
@@ -30,7 +27,7 @@ Rick and Morty's App es una aplicación que consume la API pública de Rick and 
 
 ## Base de datos
 
-En el Módulo 4 (en curso), se utilizará Postgres y una base de datos relacional para almacenar los datos relevantes de la aplicación.
+En el Módulo 4, se utilizo Postgres, una base de datos relacional para almacenar los datos relevantes de la aplicación.
 
 ## Repositorio
 
