@@ -11,7 +11,7 @@ import { Detail } from "./components/Detail/Detail.jsx";
 import { Form } from "./components/Form/Form.jsx";
 import { CursorShip } from "./components/cursorShip/CursorShip";
 
-axios.defaults.baseURL = 'http://rickandmorty.leodev.tech'
+axios.defaults.baseURL = 'ep-bitter-morning-74358837-pooler.us-east-1.postgres.vercel-storage.com'
 // axios.defaults.baseURL = 'http://localhost:3001/rickandmorty'
 
 function App() {
