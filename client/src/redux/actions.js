@@ -6,11 +6,10 @@ const FILTER = "FILTER";
 const ORDER = "ORDER";
 
 const addFav = (character) => {
-  const endPoint = 'http://localhost:3001/rickandmorty/fav'
+  const endPoint = '/rickandmorty/fav'
   return async (dispatch)=>{
     try {
       const {data} = await axios.post(endPoint, character)
-      console.log(data);
       dispatch({
         type: ADD_FAV,
         payload: data
@@ -22,7 +21,7 @@ const addFav = (character) => {
 };
 
 const removeFav = (id) => {
-  const endPoint = `http://localhost:3001/rickandmorty/fav/${id}`
+  const endPoint = `/rickandmorty/fav/${id}`
   return async (dispatch)=>{
     try {
       const {data} = await axios.delete(endPoint)

@@ -34,7 +34,7 @@ const Detail = ({ selectedCharacter }) => {
     }
 
     (originUrl || locationUrl) &&
-      axios(`http://localhost:3001/rickandmorty/location?url1=${url1}&url2=${url2}`)
+      axios(`/rickandmorty/location?url1=${url1}&url2=${url2}`)
         .then(({ data }) => {
           if (originUrl && locationUrl) {
             setOriginData({

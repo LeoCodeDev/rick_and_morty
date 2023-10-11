@@ -11,6 +11,8 @@ import { Detail } from "./components/Detail/Detail.jsx";
 import { Form } from "./components/Form/Form.jsx";
 import { CursorShip } from "./components/cursorShip/CursorShip";
 
+axios.defaults.baseURL = 'https://rickandmorty.leodev.tech'
+
 function App() {
 
   const [characters, setCharacters] = useState([]);
@@ -18,7 +20,7 @@ function App() {
   
     async function fetchFavorites() {
       try {
-        const response = await axios.get("http://localhost:3001/rickandmorty/fav");
+        const response = await axios.get("/rickandmorty/fav");
 
         // Aquí asumimos que el resultado de la petición contiene un array de personajes favoritos
         setCharacters(response.data);
@@ -43,7 +45,7 @@ function App() {
       if (existingCharacter) return;
 
       const { data } = await axios(
-        `http://localhost:3001/rickandmorty/character/${id}`
+        `/rickandmorty/character/${id}`
       );
 
       setCharacters((oldChars) => [data, ...oldChars]);
@@ -77,7 +79,7 @@ function App() {
   const login = async (userData) => {
     try {
       const { email, password } = userData;
-      const URL = `http://localhost:3001/rickandmorty/login/`;
+      const URL = `/rickandmorty/login/`;
       const { data } = await axios(
         `${URL}?email=${email}&password=${password}`
       );
