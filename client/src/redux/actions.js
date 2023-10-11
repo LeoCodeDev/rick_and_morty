@@ -6,7 +6,7 @@ const FILTER = "FILTER";
 const ORDER = "ORDER";
 
 const addFav = (character) => {
-  const endPoint = '/fav'
+  const endPoint = '/rickandmorty/fav'
   return async (dispatch)=>{
     try {
       const {data} = await axios.post(endPoint, character)
@@ -21,7 +21,7 @@ const addFav = (character) => {
 };
 
 const removeFav = (id) => {
-  const endPoint = `/fav/${id}`
+  const endPoint = `/rickandmorty/fav/${id}`
   return async (dispatch)=>{
     try {
       const {data} = await axios.delete(endPoint)
