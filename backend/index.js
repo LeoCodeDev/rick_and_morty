@@ -10,6 +10,7 @@ conn
     server.listen(PORT, () => {
       console.log(`Server raised in port: ${PORT}`);
     });
+    process.exit();
   })
   .catch((err) => {
     console.error("Error syncing database:", err);
