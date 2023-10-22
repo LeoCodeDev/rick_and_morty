@@ -11,8 +11,8 @@ import { Detail } from "./components/Detail/Detail.jsx";
 import { Form } from "./components/Form/Form.jsx";
 import { CursorShip } from "./components/cursorShip/CursorShip.jsx";
 
-axios.defaults.baseURL = 'https://rick-and-morty-do1m.vercel.app/'
-// axios.defaults.baseURL = 'http://localhost:3001'
+// axios.defaults.baseURL = 'https://rick-and-morty-do1m.vercel.app/'
+axios.defaults.baseURL = 'http://localhost:3001/api/v1'
 
 function App() {
 

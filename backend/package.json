@@ -2,13 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "description": "server of rick and morty's app",
-  "main": "index.js",
+  "main": "/api/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "start": "nodemon ./src/index.js"
+    "start": "nodemon ./api/index.js"
   },
   "repository": {
     "type": "git",

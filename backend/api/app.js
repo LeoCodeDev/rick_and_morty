@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require("./routes");
+const router = require("./routes/index");
 const morgan = require("morgan");
 const cors = require('cors');
 const server = express()
@@ -11,6 +11,6 @@ server.use(cors({origin: origin}))
 
 server.use(express.json())
 
-server.use('/rickandmorty', router)
+server.use('/api/v1/rickandmorty', router)
 
 module.exports = server

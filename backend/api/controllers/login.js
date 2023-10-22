@@ -11,7 +11,6 @@ const login = async (req, res) => {
         email: email,
       },
     });
-
     if (!loggedUser) return res.status(404).json({ message: "User not found" });
 
     // const userPassword = loggedUser.dataValues.password;
