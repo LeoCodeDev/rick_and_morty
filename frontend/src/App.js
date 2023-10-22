@@ -9,7 +9,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { About } from "./components/About/About.jsx";
 import { Detail } from "./components/Detail/Detail.jsx";
 import { Form } from "./components/Form/Form.jsx";
-import { CursorShip } from "./components/cursorShip/CursorShip";
+import { CursorShip } from "./components/cursorShip/CursorShip.jsx";
 
 axios.defaults.baseURL = 'https://rick-and-morty-do1m.vercel.app/'
 // axios.defaults.baseURL = 'http://localhost:3001'
