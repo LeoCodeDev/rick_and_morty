@@ -3,10 +3,11 @@ const { Sequelize } = require("sequelize");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, POSTGRES_URL} = process.env;
 const FavoriteModel = require("./models/Favorite");
 const UserModel = require("./models/User");
-console.log({ DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, POSTGRES_URL})
+
+const CONNECTION = POSTGRES_URL || `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
+
 const database = new Sequelize(
-  // POSTGRES_URL,
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  CONNECTION,
   { logging: false, 
     native: false,
     dialectOptions: {
